@@ -1,0 +1,8 @@
+typeahead([source]="typeaheadSuggest",
+            placeholder="Search a country",
+            [create]="typeaheadCreate",
+            displayWith="name")
+    ng-template(let-i="result")
+        img.flag([src]="i.flag")
+        b {{i.name}}
+        span   (they speak {{i.languages[0].name}})

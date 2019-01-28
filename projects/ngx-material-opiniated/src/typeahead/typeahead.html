@@ -1,0 +1,35 @@
+<mat-form-field>
+    <input matInput
+        [matAutocomplete]="auto"
+        [placeholder]="placeholder"
+        #input=""
+        [formControl]="searchControl"
+        [ngModel]="value"
+        (ngModelChange)="setValue($event); text = $event;"
+        (blur)="onBlur()"
+        (keyup)="onEmptyInput($event)"
+    >
+    <button *ngIf="create" mat-button matSuffix mat-icon-button matTooltip="Create" (click)="onCreate()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    <mat-autocomplete #auto="matAutocomplete"
+        autoActiveFirstOption
+        [displayWith]="displayWithInternal"></mat-autocomplete>
+        
+        <mat-option *ngFor="let s of filteredOptions | async" [value]="s">
+            <template-injector [template]="itemTemplate" [value]="s" name="result"></template-injector>
+        </mat-option>
+
+        <!-- ===  results ===
+        
+        //- ===  no result ===
+        //- mat-option(*ngIf="!searching && !(filteredOptions | async)?.length")
+            div.ta-message(#noresultref, [hidden]="isEmpty(noresultref)")
+                ng-content(select="[noresult]")
+            div.ta-message.text-center(*ngIf="noresultref.childNodes.length == 0") No result
+
+        //- ===  add ===
+        //- mat-option(#createRef, [hidden]="isEmpty(createRef)", [value]="_createTag")
+            ng-content(select="[create]")
+            -->
+</mat-form-field>

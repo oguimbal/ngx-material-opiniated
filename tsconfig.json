@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-material-opiniated": [
+        "dist/ngx-material-opiniated"
+      ],
+      "ngx-material-opiniated/*": [
+        "dist/ngx-material-opiniated/*"
+      ]
+    }
   }
 }
