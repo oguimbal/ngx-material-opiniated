@@ -77,7 +77,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         const data = src(val);
         return from(data)
             .pipe(catchError(x => {
-                (this.notif || console).error(x);
+                this.notif.error(x);
                 return from([[]]);
             }));
     }
@@ -92,7 +92,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
             }
             this.onBlur();
         } catch (e) {
-            (this.notif || console).error(e);
+            this.notif.error(e);
             this.onBlur();
         }
     }
