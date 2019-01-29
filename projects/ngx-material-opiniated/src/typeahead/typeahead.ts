@@ -5,7 +5,9 @@ import { INotificationService } from '../services';
 import { FormControl } from '@angular/forms';
 import { startWith, debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { graphMatches } from '../utils';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import { toObservable } from '../utils';
 
 // ================================================
 @Component({
@@ -16,6 +18,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class OpiniatedTypeaheadComponent<T> implements OnChanges {
 
     faPlus = faPlus;
+    faSpinner = faSpinner;
+    faTimes = faTimes;
     searchControl = new FormControl();
 
     @Input()
@@ -50,13 +54,15 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
     @ViewChild('createRef') createRef;
     @ViewChild('input') input;
 
+    private _initialValue: Observable<T>;
     _createTag = {};
     creating = false;
+    status: 'init' | 'ready' | 'noResult' | 'error' | 'searching';
 
     filteredOptions = this.searchControl.valueChanges
         .pipe(
             startWith(null),
-            debounceTime(200),
+            debounceTime(300),
             distinctUntilChanged(),
             switchMap(val => {
                 return this.filter(val || '');
@@ -74,12 +80,16 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         if (!val && !this.searchWhenEmpty || !src) {
             return from([[]]);
         }
+        this.status = 'searching';
         const data = src(val);
-        return from(data)
+        const ret = from(data)
             .pipe(catchError(x => {
+                this.status = 'error';
                 this.notif.error(x);
                 return from([[]]);
             }));
+        ret.subscribe(() => this.status = 'ready');
+        return ret;
     }
 
     async onCreate() {
@@ -137,6 +147,20 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
             return ref.childNodes[0]['hidden'] || ref.childNodes[0].childNodes.length === 0;
         }
         return ref.childNodes.length === 0;
+    }
+
+    @Input()
+    set initialValue(value: any) {
+        this._initialValue = toObservable(value);
+        this.status = 'init';
+        this._initialValue.subscribe(v => {
+            this.setValue(v);
+            this.status = 'ready';
+        }, () => this.status = 'error');
+    }
+
+    get initialValue() {
+        return this._initialValue;
     }
 
 

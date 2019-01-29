@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { delay } from './utils';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { INotificationService } from 'projects/ngx-material-opiniated/src/public_api';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { delay } from '@oguimbal/utilities';
 
 @Component({
   selector: 'app-root',

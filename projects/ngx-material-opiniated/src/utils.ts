@@ -1,5 +1,17 @@
 
 
+import { Observable, isObservable, from } from 'rxjs';
+
+/** Infers an observable from a given value (constant value, promise, observable, ...) */
+export function toObservable<T>(value: any): Observable<T> {
+    if (typeof value === 'function')
+        value = value();
+    if (isObservable<T>(value))
+        return value;
+    if (value && typeof value.then === 'function')
+        return from(value);
+    return from([value]);
+}
 
 export function graphMatches(item: any, val: string) {
     if (!item) {

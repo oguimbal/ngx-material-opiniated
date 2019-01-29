@@ -7,9 +7,15 @@
         (blur)="onBlur()"
         (keyup)="onEmptyInput($event)"
     >
-    <button *ngIf="create" mat-button matSuffix mat-icon-button matTooltip="Create" (click)="onCreate()">
+    <button *ngIf="create && status === 'ready'" mat-button matSuffix mat-icon-button matTooltip="Create" (click)="onCreate()">
         <fa-icon [icon]="faPlus"></fa-icon>
     </button>
+    <span *ngIf="status === 'searching'" matSuffix>
+        <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
+    </span>
+    <span *ngIf="status === 'error'" matSuffix>
+        <fa-icon [icon]="faTimes" class="text-danger"></fa-icon>
+    </span>
     <mat-autocomplete #auto="matAutocomplete"
         autoActiveFirstOption
         [displayWith]="displayWithInternal">
