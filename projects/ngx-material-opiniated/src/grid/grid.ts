@@ -44,7 +44,7 @@ export class GridOpenColumnDirective {
 // ======================================================================================== GRID
 @Component({
     selector: 'grid',
-    templateUrl: './grid.pug',
+    templateUrl: './grid.html',
     styleUrls: ['./grid.scss'],
 })
 export class GridComponent implements AfterViewInit, AfterContentInit {

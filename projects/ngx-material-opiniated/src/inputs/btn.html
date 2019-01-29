@@ -1,0 +1,38 @@
+<!-- todo implement those ? https://codepen.io/colewaldrip/pen/bdZVGd -->
+<ng-container [ngSwitch]="type"><button class="iconbtn" mat-icon-button="mat-icon-button" *ngSwitchCase="'icon'"
+        [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="iconOutlet"></ng-container>
+    </button><button class="iconbtn" mat-fab="mat-fab" *ngSwitchCase="'fab'" [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="iconOutlet"></ng-container>
+    </button><button class="iconbtn" mat-mini-fab="mat-mini-fab" *ngSwitchCase="'minifab'" [color]="color"
+        [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="iconOutlet"></ng-container>
+    </button>
+    <button mat-raised-button="mat-raised-button" *ngSwitchCase="'raised'" [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
+    </button><button mat-stroked-button="mat-stroked-button" *ngSwitchCase="'stroked'" [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
+    </button><button mat-flat-button="mat-flat-button" *ngSwitchCase="'flat'" [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
+    </button><button mat-button="mat-button" *ngSwitchCase="'basic'" [color]="color" [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
+    </button>
+    <button class="iconbtn" mat-mini-fab="mat-mini-fab" *ngSwitchCase="'minifab-content'" [color]="color"
+        [attr.disabled]="disabled">
+        <ng-container *ngTemplateOutlet="contentOutlet"></ng-container>
+    </button>
+</ng-container>
+<ng-template #contentOutlet>
+    <mat-icon *ngIf="icon &amp;&amp; !loading &amp;&amp; type !== 'minifab-content'">
+        <fa-icon [icon]="icon"></fa-icon>
+    </mat-icon>
+    <div class="loadingind" *ngIf="loading"></div><span class="btncontent" #btnContent>
+        <ng-content></ng-content>
+    </span>
+</ng-template>
+<ng-template #iconOutlet>
+    <mat-icon *ngIf="icon &amp;&amp; !loading">
+        <fa-icon [icon]="icon"></fa-icon>
+    </mat-icon>
+    <div class="loadingind" *ngIf="loading"></div>
+</ng-template>

@@ -2,7 +2,7 @@
 
 @Component({
   selector: 'error-view',
-  templateUrl: './loader.errorview.pug',
+  templateUrl: './loader.errorview.html',
   styleUrls: ['./loader.errorview.scss']
 })
 export class LoaderErrorViewComponent {

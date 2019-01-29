@@ -1,0 +1,15 @@
+<!-- //- ==== edit buttons -->
+<td class="mat-cell" *ngIf="onSave" style="white-space: nowrap;">
+    <btn class="sm" (clicked)="isEditting ? cancel() : edit()" type="icon" color="primary" [icon]="isEditting ? 'undo' : 'pencil-alt'"></btn>
+</td>
+
+<!-- //- ==== data columns -->
+<td class="mat-cell" *ngFor="let col of columns" [class.openable]="isCellOpenable(currentRow, col)" (click)="onCellClick(currentRow, col, $event)" [ngClass]="(cellClass?cellClass(currentRow[col.key], col, currentRow):null)||classFor(col)">
+    <column-cell [item]="currentRow" [column]="col" [isEditting]="isEditting"></column-cell>
+    <div class="openWrapper" *ngIf="isCellOpen(currentRow, col)"></div>
+</td>
+
+<!-- //- ==== save button -->
+<td class="mat-cell" *ngIf="onSave || onDelete" style="white-space: nowrap;">
+    <btn class="sm" [action]="isEditting ? save : doDelete" type="icon" [color]="isEditting ? 'primary' : 'warn'" [icon]="isEditting ? 'save' : 'trash'"></btn>
+</td>

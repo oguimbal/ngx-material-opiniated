@@ -8,7 +8,7 @@ Classes usable:
 @Component({
     selector: 'check',
     styleUrls: ['./check.scss'],
-    templateUrl: './check.pug',
+    templateUrl: './check.html',
 })
 export class CheckComponent {
 

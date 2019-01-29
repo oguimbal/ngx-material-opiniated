@@ -33,7 +33,7 @@ export class StateMatcher implements ErrorStateMatcher {
 @Component({
     selector: 'txt',
     styleUrls: ['./text.scss'],
-    templateUrl: './text.pug',
+    templateUrl: './text.html',
     providers: [TEXT_VALUE_ACCESSOR]
 })
 export class TextComponent implements ControlValueAccessor {

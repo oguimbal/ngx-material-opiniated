@@ -2,7 +2,7 @@
 
 @Component({
   selector: 'loader',
-  templateUrl: './loader.loadingview.pug',
+  templateUrl: './loader.loadingview.html',
   styleUrls: ['./loader.loadingview.scss']
 })
 export class LoaderLoadingViewComponent {

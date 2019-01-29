@@ -1,0 +1,20 @@
+﻿<ng-template [ngIf]="inline">
+    <div class="loader-message text-danger" [matTooltip]="details"><span> Failed to load</span><span>  {{what||'this'}}  </span>
+        <a *ngIf="retry" (click)="retry()">
+            <fa-icon icon="sync"></fa-icon><span> retry</span></a>
+    </div>
+</ng-template>
+<ng-template [ngIf]="!inline">
+    <div class="loader-err-icon text-danger">:(</div>
+    <div class="loader-message text-danger">Oops, I failed to load</div>
+    <div class="loader-message text-danger"> {{what||'this'}}</div>
+    <div class="loader-details text-danger" *ngIf="details">
+        <a class="text-danger" *ngIf="!showDetails" (click)="showDetails=true">
+            <fa-icon icon="details"></fa-icon><span>details</span></a>
+        <div *ngIf="showDetails">{{details}}</div>
+        <div class="retry">
+            <a *ngIf="retry" (click)="retry()">
+                <fa-icon icon="sync"></fa-icon><span> retry</span></a>
+        </div>
+    </div>
+</ng-template>

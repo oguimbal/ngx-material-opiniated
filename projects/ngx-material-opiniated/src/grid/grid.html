@@ -1,0 +1,34 @@
+<div class="gridHeader">
+    <h3 class="gridTitle" *ngIf="gridTitle">{{gridTitle}}</h3>
+    <div class="grid-search" *ngIf="canSearch">
+        <txt [(value)]="searchText" icon="fa fa-search" i18n="@@Grid.Search" [placeholder]="searchPlaceholder || 'Search'"></txt>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div *loader="data?.currentLoad; what: 'data';">
+    <table class="mat-elevation-z2 mat-table table table-hover" *ngIf="data">
+        <tr class="mat-header-row">
+            <th class="mat-header-cell" *ngIf="onSave" style="width:45px;white-space: nowrap;"></th>
+            <th class="mat-header-cell" *ngFor="let col of data.columns" [class]="classFor(col)" (click)="sortBy(col)">{{col.name}}<i [class]="sortClassFor(col)"></i></th>
+            <th *ngIf="onSave" style="width:45px;white-space: nowrap;"></th>
+        </tr>
+        <tr class="mat-header-row" *ngIf="canFilter">
+            <th class="mat-header-cell" *ngIf="onSave" style="width:45px;white-space: nowrap;"></th>
+            <th class="mat-header-cell" *ngFor="let col of data.columns"><span *ngIf="col.canFilter"><txt class="small" icon="filter" [(value)]="col.filter"></txt></span></th>
+        </tr>
+        <ng-container *ngFor="let x of lines; let i = index">
+            <tr class="datarow mat-row" [contextMenu]="rowContextMenu || emptyContextMenu" [contextMenuSubject]="x" [cellClass]="cellClass" [class.odd]="i%2" (click)="onClick($event,x)" [class.clickable]="canClick" [row]="x" [columns]="data.columns" [onSave]="onSave"
+                [onDelete]="onDelete" (delete)="removeRow($event)"></tr>
+            <tr class="openrow mat-row" [colspan]="data.columns.length+2" *ngIf="x.$$open" [item]="x" [readonly]="!x.$$isEditting" [template]="x.$$open"></tr>
+        </ng-container>
+        <context-menu #emptyContextMenu="#emptyContextMenu"></context-menu>
+    </table>
+    <div class="text-center lead" *ngIf="lines &amp;&amp; !lines.length" i18n="@@Grid.NoData">No data to display</div>
+    <div class="text-center" *ngIf="canAdd">
+        <btn class="sm" (clicked)="onAdd($event)" type="stroked" icon="plus"> {{canAddText}}</btn>
+    </div>
+</div>
+  <!-- //- .text-center([hidden]='pages.length<2')
+    ul.pagination.pagination-sm
+      li(*ngFor='let p of pages', [class.active]='data.page==p.id', [class.disabled]='p.disabled')
+        a((click)='gotoPage(p.id)') {{p.name}} -->

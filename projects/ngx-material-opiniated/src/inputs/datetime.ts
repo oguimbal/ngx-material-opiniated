@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 @Component({
     selector: 'datetime',
-    templateUrl: './datetime.pug',
+    templateUrl: './datetime.html',
     styleUrls: ['./datetime.scss'],
 })
 export class DateTimeComponent implements OnInit, OnChanges {

@@ -9,7 +9,7 @@ import { INotificationService } from '../services';
 @Component({
     selector: 'btn,a.linkBtn',
     styleUrls: ['./btn.scss'],
-    templateUrl: './btn.pug',
+    templateUrl: './btn.html',
 })
 export class BtnComponent implements OnDestroy, AfterViewInit, OnChanges {
 

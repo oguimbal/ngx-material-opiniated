@@ -11,7 +11,7 @@ import { INotificationService } from '../services';
 @Component({
     selector: 'tr.datarow',
     styleUrls: ['./grid-row.scss'],
-    templateUrl: './grid-row.pug',
+    templateUrl: './grid-row.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridRowComponent implements OnInit {
