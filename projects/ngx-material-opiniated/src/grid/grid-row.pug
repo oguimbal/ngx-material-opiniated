@@ -1,0 +1,18 @@
+
+//- ==== edit buttons
+td.mat-cell(*ngIf='onSave', style='white-space: nowrap;')
+  btn.sm((clicked)='isEditting ? cancel() : edit()',
+          type="icon",
+          color="primary",
+          [icon]="isEditting ? 'undo' : 'pencil-alt'")
+
+//- ==== data columns
+td.mat-cell(*ngFor='let col of columns', [class.openable]="isCellOpenable(currentRow, col)", (click)="onCellClick(currentRow, col, $event)", [ngClass]='(cellClass?cellClass(currentRow[col.key], col, currentRow):null)||classFor(col)')
+  column-cell([item]='currentRow', [column]='col', [isEditting]='isEditting')
+  .openWrapper(*ngIf="isCellOpen(currentRow, col)")
+    //- .openCursor(*ngIf="currentRow.$$open") &nbsp;
+td.mat-cell(*ngIf='onSave || onDelete', style='white-space: nowrap;')
+  btn.sm([action]='isEditting ? save : doDelete',
+        type="icon",
+        [color]="isEditting ? 'primary' : 'warn'",
+        [icon]="isEditting ? 'save' : 'trash'")

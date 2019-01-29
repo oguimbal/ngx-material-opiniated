@@ -7,6 +7,9 @@
   "whitelistedNonPeerDependencies": [
     "@fortawesome/angular-fontawesome",
     "@fortawesome/fontawesome-svg-core",
-    "@fortawesome/free-solid-svg-icons"
+    "@fortawesome/free-solid-svg-icons",
+    "@oguimbal/utilities",
+    "ng-pick-datetime",
+    "ngx-contextmenu"
   ]
 }

@@ -1,0 +1,43 @@
+td {
+    position: relative !important;
+
+    &.open{
+        background-color: black;
+    }
+    &.openable{
+        cursor: pointer !important;
+    }
+}
+
+.openWrapper{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 0.2em;
+    background-color: transparentize(white, 0.3);
+}
+
+// $arrowSize: 1.5em;
+// .openWrapper{
+//     position: absolute;
+//     left:0;
+//     right:0;
+//     bottom:0;
+//     height: $arrowSize/2;
+
+//     .openCursor{
+//         display: inline-block;
+//         content: ' ';
+//         width: $arrowSize;
+//         height: $arrowSize;
+//         left: 50%;
+//         margin-left: -$arrowSize/2;
+//         width: 0;
+//         height: 0;
+
+//         border-left: $arrowSize/2 solid transparent;
+//         border-right: $arrowSize/2 solid transparent;
+//         border-bottom: $arrowSize/2 solid black;
+//     }
+// }

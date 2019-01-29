@@ -1,0 +1,39 @@
+﻿@import '../utils.scss';
+
+//- ==============================
+$width: 1.5px;
+$radius: 80px;
+
+:host:not(.inline) {
+  display: block;
+  text-align: center;
+
+  .loader-message {
+    display: block;
+    padding: 0 2em;
+    font-size: 1.5em;
+  }
+}
+
+:host.inline {
+  vertical-align: central;
+  position: relative;
+  .loader-message {
+    display: inline;
+    padding-left: 1.6em;
+  }
+}
+
+div.loader {
+  display: inline-block;
+}
+
+:host:not(.inline) .loader {
+  @include loader($radius, $width);
+}
+
+:host.inline .loader {
+  @include loader(1.3em, 0.2em);
+  position: absolute;
+  margin-top: 0;
+}

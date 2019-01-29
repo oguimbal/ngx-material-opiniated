@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { OpiniatedTypeaheadComponent } from './typeahead';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
-import { TemplateInjectorComponent } from './template-injector';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OpiniatedDisplayModule } from '../display';
+import { OpiniatedCommonModule } from '../common';
 
 
 
 @NgModule({
-  declarations: [OpiniatedTypeaheadComponent, TemplateInjectorComponent],
+  declarations: [OpiniatedTypeaheadComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OpiniatedDisplayModule,
+    MatTooltipModule,
+    OpiniatedCommonModule.forChild()
   ],
   exports: [OpiniatedTypeaheadComponent]
 })

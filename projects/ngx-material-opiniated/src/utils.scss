@@ -1,0 +1,54 @@
+// ===== spinner found at http://projects.lukehaas.me/css-loaders/
+
+@mixin loader($radius, $width) {
+    margin: $radius/2.5 auto;
+    font-size: 1em;
+    position: relative;
+    text-indent: -9999em;
+    $color: #2980b9;
+    border-top: $width solid transparentize($color, 0);
+    border-right: $width solid transparentize($color, 0);
+    border-bottom: $width solid transparentize($color, 0);
+    border-left: $width solid transparentize($color, 0.8);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: rotateanimation 1.1s infinite linear;
+    -moz-animation: rotateanimation 1.1s infinite linear;
+    -o-animation: rotateanimation 1.1s infinite linear;
+    animation: rotateanimation 1.1s infinite linear;
+  
+    border-radius: 50%;
+    width: $radius;
+    height: $radius;
+    &:after {
+      border-radius: 50%;
+      width: $radius;
+      height: $radius;
+    }
+  
+    @-webkit-keyframes rotateanimation {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes rotateanimation {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    
+  }
+  

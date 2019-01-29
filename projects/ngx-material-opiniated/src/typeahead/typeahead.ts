@@ -9,7 +9,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 // ================================================
 @Component({
-// tslint:disable-next-line: component-selector
     selector: 'typeahead',
     styleUrls: ['./typeahead.scss'],
     templateUrl: './typeahead.html',

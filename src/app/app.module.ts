@@ -3,8 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { OpiniatedTypeaheadModule } from 'projects/ngx-material-opiniated/src/public_api';
+import { OpiniatedTypeaheadModule, OpiniatedDisplayModule, OpiniatedInputsModule , OpiniatedGridModule, INotificationService, OpiniatedCommonModule } from 'projects/ngx-material-opiniated/src/public_api';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { ContextMenuModule } from 'ngx-contextmenu';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,16 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     OpiniatedTypeaheadModule,
-    HttpClientModule
+    OpiniatedDisplayModule,
+    OpiniatedInputsModule,
+    OpiniatedGridModule,
+    OpiniatedCommonModule.forRoot(),
+    HttpClientModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [INotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

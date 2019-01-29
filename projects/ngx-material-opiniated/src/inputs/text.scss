@@ -1,0 +1,157 @@
+@import '../utils.scss';
+
+:host{
+    position:relative;
+    display:block;
+    &.hasInfo{
+      margin-bottom: 2.3em;
+    }
+    // margin-bottom: 1.3em;
+    &.small{
+      margin-bottom: 0;
+      input{
+          padding: 0.1em;
+      }
+    }
+
+    &.fullWidth mat-form-field {
+      display: block;
+    }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+ $validate-height:5px;
+
+
+.labelscontainer{
+    position:relative;
+}
+.errorlabel{
+    position:absolute;
+    right:0;
+    top:0;
+    display:block;
+    // color: $color-error;
+    font-size: 0.8em;
+}
+.infolabel{
+    display:block;
+    position:absolute;
+    right:0;
+    top:0;
+    font-size: 0.8em;
+}
+
+// https://codepen.io/holdencreative/pen/vEVbwv
+/* Progress Bar */
+.errorbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: $validate-height;
+  display: block;
+  width: 100%;
+  background-color: #acece6;
+
+  /*border-radius: 2px;*/
+  background-clip: padding-box;
+  overflow: hidden;
+
+  &.valid{
+      display: none;
+  }
+  &.error{
+      // background-color: $color-error;
+      .determinate, .indeterminate{
+          display:none;
+      }
+  }
+}
+
+  .errorbar .determinate {
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    bottom: 0;
+    background-color: #26a69a;
+    transition: width .3s linear; }
+  .errorbar .indeterminate {
+    background-color: #26a69a; }
+    .errorbar .indeterminate:before {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      will-change: left, right;
+      -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+              animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
+    .errorbar .indeterminate:after {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      will-change: left, right;
+      -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+              animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+      -webkit-animation-delay: 1.15s;
+              animation-delay: 1.15s; }
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+  60% {
+    left: 100%;
+    right: -90%; }
+  100% {
+    left: 100%;
+    right: -90%; } }
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+  60% {
+    left: 100%;
+    right: -90%; }
+  100% {
+    left: 100%;
+    right: -90%; } }
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%; }
+  60% {
+    left: 107%;
+    right: -8%; }
+  100% {
+    left: 107%;
+    right: -8%; } }
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%; }
+  60% {
+    left: 107%;
+    right: -8%; }
+  100% {
+    left: 107%;
+    right: -8%; } }
+
+
+.loader {
+  @include loader(1em, 0.15em);
+  position: absolute;
+  bottom: -0.3em;
+  right: 0;
+  margin: 0.2em;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+}

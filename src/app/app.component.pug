@@ -1,8 +1,93 @@
-typeahead([source]="typeaheadSuggest",
-            placeholder="Search a country",
-            [create]="typeaheadCreate",
-            displayWith="name")
-    ng-template(let-i="result")
-        img.flag([src]="i.flag")
-        b {{i.name}}
-        span   (they speak {{i.languages[0].name}})
+.container
+    .row
+        .col-md-6
+            mat-card
+                mat-card-title Text
+                txt([validator]="validate", placeholder="Your field", info="Some tip to fill that")
+                txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
+
+        .col-md-6
+            mat-card
+                mat-card-title Typeahead
+
+                    typeahead([source]="typeaheadSuggest",
+                                placeholder="Search a country",
+                                [create]="typeaheadCreate",
+                                displayWith="name")
+                        ng-template(let-i="result")
+                            img.flag([src]="i.flag")
+                            b {{i.name}}
+                            span   (they speak {{i.languages[0].name}})
+            mat-card
+                mat-card-title Checkbox
+                check Some checkbox
+    .row
+        .col-md-6
+            mat-card
+                mat-card-title Datetime
+                datetime(placeholder="Your date")
+                datetime(placeholder="Your disabled date", [disabled]="true")
+    .row
+        .col-md-6
+            mat-card
+                mat-card-title Grid
+                //- Specifying 'columns' is optional (shows all, except those begining with $ or __)
+                //- Supported types that will be infered from data type:
+                //-    * text
+                //-    * number
+                //-    * boolean: shows a checkbox
+                //-    * money (if type {amt: string; cur: string})
+                //-    * action (if function): shows a button
+                grid([source]="gridSource", columns="item, price, buy, commestible")
+
+                    //- Custom template for a column
+                    ng-template(gridColumn="item", let-i)
+                        b {{i.item}}
+                        span(*ngIf="i.commestible")  (eat me !)
+
+                    //- Open row when clicking on a column
+                    ng-template(gridOpenColumn="price", let-i)
+                        div You can buy {{i.item}} for almost nothing !
+
+                .text-center
+                    i Tip: Click on an article price !
+        .col-md-6
+            mat-card
+                mat-card-title Editable grid
+                //- if 'onSave' property is specified, then the grid will be editable
+                grid([source]="editGridSource",
+                    [canSearch]="false",
+                    [onSave]="saveGridRow",
+                    canAdd="Add some weird personage",
+                    [onDelete]="deleteGridRow")
+
+    .row
+        .col-md-6
+            mat-card
+                mat-card-title Button
+                div Loader on network action:
+                btn([action]="longAction", icon="check") Click for action
+
+                div Automatic message on error:
+                btn([action]="errorAction") Click for error
+
+                div No content
+                btn([action]="longAction", icon="check")
+
+                div Colors
+                btn(color="primary", icon="check", [action]="longAction") primary
+                btn(color="accent", icon="check", [action]="longAction") accent
+                btn(color="warn", icon="check", [action]="longAction") warn
+
+                div Types (primary color)
+
+                btn(icon="check", type="flat", color="primary", [action]="longAction") Flat
+                btn(icon="check", type="basic", color="primary", [action]="longAction") Basic
+                btn(icon="check", type="stroked", color="primary", [action]="longAction") Stroked
+                br
+                btn(icon="check", type="fab", color="primary", [action]="longAction")
+                | (fab)
+                btn(icon="check", type="minifab", color="primary", [action]="longAction")
+                | (mini fab)
+                btn(icon="check", type="icon", color="primary", [action]="longAction")
+                | (icon)

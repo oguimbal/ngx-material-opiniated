@@ -1,0 +1,72 @@
+@import '../utils.scss';
+
+:host{
+    display: inline-block;
+}
+
+button:not(.iconbtn) {
+    mat-icon {
+        margin-top: -1em;
+        margin-left: -0.3em;
+    }
+
+    .loadingind, i.fa{
+        &:not(.noContent){
+            margin-right: 1em;
+        }
+    }
+}
+
+
+@mixin loaderind($h){
+    .loadingind{
+        @include loader($h*0.8, 0.2em);
+        margin:0;
+    }
+
+    .loadingind, i.fa{
+        height:$h*0.8;
+        display:inline-block;
+    }
+}
+
+
+
+@include loaderind(1.5em);
+
+// :host.xs{
+
+//     font-size: 12px;
+//     .btn{
+//         padding: 1px 5px;
+//     }
+
+//     &:not(.noradius) .btn {
+//         border-radius: 3px;
+//     }
+//     @include loaderind(1.5em);
+// }
+// :host.sm{
+//     font-size: 12px;
+//     .btn {
+//         padding: 5px 10px;
+//     }
+
+//     &:not(.noradius) .btn {
+//         border-radius: 3px;
+//     }
+//     @include loaderind(1.5em);
+
+// }
+// :host.lg{
+//     font-size: 18px;
+//     .btn {
+//         padding: 10px 35px;
+//     }
+
+//     &:not(.noradius) .btn {
+//         border-radius: 100px;
+//     }
+//     @include loaderind(1.5em);
+
+// }

@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin grid-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  grid {
+
+    // .datarow{
+    //     background-color:  mat-color($background) !important;
+    //     &.odd{
+    //         background-color: $background  !important;
+    //     }
+    // }
+    .openrow{
+        // border-top: 0.3px solid transparentize(white, 0.8);
+        // border-bottom: 0.3px solid transparentize(white, 0.8);
+        background-color: mat-color($background, background);
+    }
+  }
+}

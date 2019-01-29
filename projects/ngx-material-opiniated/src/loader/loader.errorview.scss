@@ -1,0 +1,33 @@
+﻿@import 'loader.scss';
+
+:host:not(.inline) {
+  display: block;
+  text-align: center;
+  min-height: 10em;
+
+  .loader-message {
+    display: block;
+    padding: 0 2em;
+    font-size: 1.5em;
+  }
+  .loader-details {
+    margin-top: 0.9em;
+    font-size: 0.9em;
+  }
+
+  .loader-err-icon {
+    display: inline-block;
+    font-size: $radius;
+    margin: 0.5em auto;
+  }
+  .retry {
+    margin: 1em;
+    font-size: 1.5em;
+  }
+}
+
+:host.inline {
+  .loader-message {
+    display: inline;
+  }
+}

@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef, OnChanges, ViewContainerRef, Input} fro
 
 
 @Component({
-// tslint:disable-next-line: component-selector
     selector: 'template-injector',
     template: ``,
 })

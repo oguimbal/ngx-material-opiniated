@@ -1,0 +1,16 @@
+div.form-group([class.inline]="inline")
+    mat-form-field
+        span.input-group-addon.name(matPrefix, *ngIf="name")
+            | {{name}}
+        owl-date-time([pickerMode]="'dialog'", #dtRef)
+        //- https://danielykpan.github.io/date-time-picker/
+        input.form-control(matInput,
+            [owlDateTimeTrigger]="dtRef",
+            (ngModelChange)="onDateChange($event)",
+            [ngModel]="valueInternal",
+            [placeholder]="placeholder",
+			[readonly]="readonly",
+			[disabled]="disabled",
+            [owlDateTime]="dtRef")
+        span.input-group-addon(matSuffix)
+            i.fa.fa-calendar

@@ -15,13 +15,13 @@
     <mat-autocomplete #auto="matAutocomplete"
         autoActiveFirstOption
         [displayWith]="displayWithInternal"></mat-autocomplete>
-        
+
         <mat-option *ngFor="let s of filteredOptions | async" [value]="s">
             <template-injector [template]="itemTemplate" [value]="s" name="result"></template-injector>
         </mat-option>
 
         <!-- ===  results ===
-        
+
         //- ===  no result ===
         //- mat-option(*ngIf="!searching && !(filteredOptions | async)?.length")
             div.ta-message(#noresultref, [hidden]="isEmpty(noresultref)")

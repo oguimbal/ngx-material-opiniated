@@ -1,0 +1,25 @@
+:host{
+    display: block;
+}
+
+
+.name{
+    position: relative;
+
+}
+.empty{
+    z-index: 10;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    transform: translateX(130%);
+    line-height: 2.2em;
+}
+
+.inline{
+    input, .input-group-addon{
+        display: none;
+    }
+}
