@@ -1,7 +1,8 @@
 
 export abstract class INotificationService {
   abstract default(message: string);
-  abstract error(error: any);
+  abstract error(error: string);
+  abstract warn(messag: string);
   abstract success(message: string);
   abstract info(message: string);
 
