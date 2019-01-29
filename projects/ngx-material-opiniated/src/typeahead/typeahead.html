@@ -4,8 +4,6 @@
         [placeholder]="placeholder"
         #input=""
         [formControl]="searchControl"
-        [ngModel]="value"
-        (ngModelChange)="setValue($event); text = $event;"
         (blur)="onBlur()"
         (keyup)="onEmptyInput($event)"
     >
@@ -14,12 +12,12 @@
     </button>
     <mat-autocomplete #auto="matAutocomplete"
         autoActiveFirstOption
-        [displayWith]="displayWithInternal"></mat-autocomplete>
+        [displayWith]="displayWithInternal">
 
         <mat-option *ngFor="let s of filteredOptions | async" [value]="s">
             <template-injector [template]="itemTemplate" [value]="s" name="result"></template-injector>
         </mat-option>
-
+    </mat-autocomplete>
         <!-- ===  results ===
 
         //- ===  no result ===

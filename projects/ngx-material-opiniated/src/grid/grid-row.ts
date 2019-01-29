@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Inject, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output } from '@angular/core';
-import { Column } from './grid-datasource';
 import { copyWithFunctions, resetTo } from '@oguimbal/utilities';
 import { GridComponent } from './grid';
+import { Column } from './grid-datasource';
 import { INotificationService } from '../services';
 
 

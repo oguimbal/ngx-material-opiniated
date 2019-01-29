@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IGridColumn } from './grid-datasource';
+import { IGridColumn } from './_interfaces';
 import { INotificationService } from '../services';
 
 @Component({

@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnChanges, ViewContainerRef, SimpleChanges, ComponentFactoryResolver, ComponentRef, ChangeDetectorRef, Inject, forwardRef, EmbeddedViewRef, Input } from '@angular/core';
 import { Column } from './grid-datasource';
 import {GridComponent} from './grid';
-import { GridRowComponent } from './grid-row';
 import { Observable } from 'rxjs';
 
 @Component({

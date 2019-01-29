@@ -1,14 +1,32 @@
 import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
 import { ContextMenuModule, ContextMenuService, IContextMenuOptions } from 'ngx-contextmenu';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faPencilAlt, faTrash, faPlus, faCalendar, faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
+import { TemplateInjectorComponent } from './template-injector';
+
+library.add(
+    faCheck,
+    faPencilAlt,
+    faTrash,
+    faPlus,
+    faCalendar,
+    faUndo,
+    faSave
+);
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        TemplateInjectorComponent
+    ],
     imports: [
         ContextMenuModule
     ],
     entryComponents: [
     ],
-    exports: [ContextMenuModule]
+    exports: [
+        ContextMenuModule
+        , TemplateInjectorComponent
+    ]
 })
 export class OpiniatedCommonModule {
     static forRoot(): ModuleWithProviders {

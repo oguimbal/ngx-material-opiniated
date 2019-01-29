@@ -5,7 +5,7 @@ import { LoaderLoadingViewComponent } from './loader.loadingview';
 import { LoaderErrorViewComponent } from './loader.errorview';
 import { MatTooltipModule } from '@angular/material';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { OpiniatedCommonModule } from '../common';
+import { OpiniatedCommonModule } from '../common/index';
 
 const EntryComponents = [
     LoaderLoadingViewComponent,

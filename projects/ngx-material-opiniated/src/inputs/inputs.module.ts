@@ -8,7 +8,7 @@ import { DateTimeComponent } from './datetime';
 import { CheckComponent } from './check';
 import { BtnComponent } from './btn';
 import { OwlNativeDateTimeModule, OwlDateTimeModule } from 'ng-pick-datetime';
-import { OpiniatedCommonModule } from '../common';
+import { OpiniatedCommonModule } from '../common/index';
 
 const Components = [
     TextComponent,
@@ -16,7 +16,6 @@ const Components = [
     CheckComponent,
     BtnComponent,
 ];
-
 
 @NgModule({
   declarations: [

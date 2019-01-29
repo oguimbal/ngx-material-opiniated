@@ -1,6 +1,5 @@
-import {Component, ElementRef, EventEmitter, TemplateRef, ChangeDetectorRef, AfterViewInit, ContentChildren, QueryList, Directive, AfterContentInit, Input, Output } from '@angular/core';
+import {Component, EventEmitter, TemplateRef, ChangeDetectorRef, AfterViewInit, ContentChildren, QueryList, Directive, AfterContentInit, Input, Output } from '@angular/core';
 import {DataSource, Column} from './grid-datasource';
-export {DataSource, Column, IGridColumn, showGrid, addGridNativeType} from './grid-datasource';
 
 const gridColumnKey = '_gridColumn';
 @Directive({

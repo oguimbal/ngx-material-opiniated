@@ -1,2 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+// @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+//- import material theming
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+//- import themes
+@import './themes/default-theme.scss';
+@import './themes/light-theme.scss';
+@import './themes/black-theme.scss';
+@import './themes/nature-theme.scss';
+
+//- import library
+@import '../projects/ngx-material-opiniated/src/common/styles.scss';
+
+
+// ======== define available themes =======
+.default-theme {
+    @include angular-material-theme($anms-theme);
+    @include opiniated-common-theme($anms-theme);
+}
+
+.light-theme {
+    @include angular-material-theme($anms-light-theme);
+    @include opiniated-common-theme($anms-light-theme);
+}
+
+.black-theme {
+    @include angular-material-theme($anms-black-theme);
+    @include opiniated-common-theme($anms-black-theme);
+}
+
+.nature-theme {
+    @include angular-material-theme($anms-nature-theme);
+    @include opiniated-common-theme($anms-nature-theme);
+}

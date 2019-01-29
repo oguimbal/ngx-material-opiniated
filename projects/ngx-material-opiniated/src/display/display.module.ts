@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LabelComponent } from './label';
 import { MoneyComponent } from './money';
 import { NumberLabelComponent } from './number-label';
-import { TemplateInjectorComponent } from './template-injector';
-import { OpiniatedCommonModule } from '../common';
+import { OpiniatedCommonModule } from '../common/index';
 
 const Components = [
     LabelComponent,
     MoneyComponent,
-    NumberLabelComponent,
-    TemplateInjectorComponent
+    NumberLabelComponent
 ];
 
 

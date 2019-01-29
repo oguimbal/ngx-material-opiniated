@@ -11,6 +11,8 @@ import { INotificationService } from 'projects/ngx-material-opiniated/src/public
 })
 export class AppComponent {
 
+  themeClass = 'light-theme';
+
   constructor(private http: HttpClient, private notif: INotificationService) {
   }
 

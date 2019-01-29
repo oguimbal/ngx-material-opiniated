@@ -88,6 +88,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
             const val = await this.create(this.text);
             if (val) {
                 this.setValue(val);
+                this.searchControl.setValue(val);
             }
             this.onBlur();
         } catch (e) {
@@ -125,6 +126,10 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         if (elt.nativeElement) {
             elt.nativeElement.focus = () => setTimeout(() => this.input.nativeElement.focus());
         }
+        this.searchControl.valueChanges.subscribe(x => {
+            this.setValue(x);
+            this.text = x;
+        });
     }
 
     isEmpty(ref: Element) {
@@ -141,6 +146,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
             return;
         }
         this._value = v;
+        this.searchControl.setValue(v);
     }
 
     setValue(v: T) {
