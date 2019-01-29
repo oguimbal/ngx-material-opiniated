@@ -28,7 +28,7 @@ export class GridRowComponent implements OnInit {
     @Input()
     columns: Column[] = [];
     @Input()
-    cellClass: string;
+    cellClass:  (value: any, col: Column, elt: any) => string;
     @Output()
     delete = new EventEmitter();
 

@@ -21,7 +21,7 @@
                 [onDelete]="onDelete" (delete)="removeRow($event)"></tr>
             <tr class="openrow mat-row" [colspan]="data.columns.length+2" *ngIf="x.$$open" [item]="x" [readonly]="!x.$$isEditting" [template]="x.$$open"></tr>
         </ng-container>
-        <context-menu #emptyContextMenu="#emptyContextMenu"></context-menu>
+        <context-menu #emptyContextMenu></context-menu>
     </table>
     <div class="text-center lead" *ngIf="lines &amp;&amp; !lines.length" i18n="@@Grid.NoData">No data to display</div>
     <div class="text-center" *ngIf="canAdd">

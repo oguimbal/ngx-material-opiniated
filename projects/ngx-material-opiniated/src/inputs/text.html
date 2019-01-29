@@ -1,7 +1,7 @@
 <mat-form-field>
     <div *ngIf="loading" matPrefix="matPrefix">
         <div class="loader"></div>
-    </div><input #nti="#nti" matInput="matInput" [type]="type" [name]="name" [(ngModel)]="value" [class.validating]="isValidating||error||loading||errorBarWidth"
+    </div><input #nti matInput="matInput" [type]="type" [name]="name" [(ngModel)]="value" [class.validating]="isValidating||error||loading||errorBarWidth"
         (blur)="onBlur()" (focus)="focused.emit()" [placeholder]="placeholder" (keydown)="onKeyDown($event)"
         [errorStateMatcher]="matcher" (keyup)="onKeyUp($event)" [readonly]="readonly" [disabled]="disabled" />
     <div class="checkvalid" *ngIf="!isValidating &amp;&amp; !loading &amp;&amp; !error &amp;&amp; validator &amp;&amp; value || icon"

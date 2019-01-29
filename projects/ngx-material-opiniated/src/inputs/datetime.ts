@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, ViewChild, ElementRef, OnChanges, Input, Output } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 
 // https://www.npmjs.com/package/ngx-clarity-datetime
 

@@ -1,0 +1,4 @@
+{
+    "entry": "./projects/ngx-material-opiniated/src/styles.scss",
+    "dest": "dist/ngx-material-opiniated/styles.scss"
+  }

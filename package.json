@@ -21,7 +21,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:demo": "ng build",
-    "build": "ng build ngx-material-opiniated",
+    "build": "ng build ngx-material-opiniated && yarn bundle-styles",
+    "bundle-styles": "node node_modules/scss-bundle/dist/bundle-cli.js -c scss-bundle.config.json",
     "postinstall": "node ./ng-add-pug-loader.js",
     "publish:lib": "npm publish dist/ngx-material-opiniated",
     "graph": "set PATH=%PATH%;C:/Program Files (x86)/Graphviz2.38/bin && madge projects/ngx-material-opiniated/src --warning --extensions ts --image graph.svg && start chrome graph.svg"
@@ -60,6 +61,7 @@
     "@angular/language-service": "~7.0.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/moment": "^2.13.0",
     "@types/node": "~8.9.4",
     "apply-loader": "^2.0.0",
     "codelyzer": "~4.5.0",

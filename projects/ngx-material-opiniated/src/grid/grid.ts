@@ -172,7 +172,7 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
         return 'Add new';
     }
 
-    onAdd() {
+    onAdd($event?: any) {
         if (this.add) {
             this.add();
             return;

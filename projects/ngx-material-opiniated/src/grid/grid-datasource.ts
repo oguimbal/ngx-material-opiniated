@@ -1,5 +1,5 @@
 import {escapeRegExp, sortBy, range} from '@oguimbal/utilities';
-import * as moment from 'moment';
+import moment from 'moment';
 import * as inputs from '../inputs/index';
 import * as display from '../display/index';
 import { ActionBinderComponent } from './action-binder';
