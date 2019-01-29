@@ -1,4 +1,24 @@
 // ===== spinner found at http://projects.lukehaas.me/css-loaders/
+@import '~@angular/material/theming';
+
+$toolbar-breakpoint: 600px;
+
+$fa-font-path: '../node_modules/@fortawesome/fontawesome-free-webfonts/webfonts';
+
+$link-hover-decoration: none;
+$label-margin-bottom: 0;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$success-colors: mat-palette($mat-green, 400);
+$warning-colors: mat-palette($mat-amber, 400);
+
 
 @mixin loader($radius, $width) {
     margin: $radius/2.5 auto;

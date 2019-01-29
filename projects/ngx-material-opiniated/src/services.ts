@@ -1,17 +1,13 @@
 
-export class INotificationService {
-  error(error: any) {
-    console.error(error);
-  }
-  confirm(message?: string): Promise<boolean> {
-    return Promise.resolve(confirm(message));
-  }
+export abstract class INotificationService {
+  abstract default(message: string);
+  abstract error(error: any);
+  abstract success(message: string);
+  abstract info(message: string);
 
-  success(message: string) {
-    alert(message);
-  }
-
-  info(message: string) {
-    alert(message);
-  }
+  abstract alert(text: string, title?: string): Promise<any>;
+  abstract confirm(message?: string): Promise<boolean>;
+  abstract saveOrDiscard(text: string, title?: string): Promise<'save' | 'discard' | 'cancel'>;
+  abstract prompt(text: string, title?: string, initialText?: string, selectedText?: string): Promise<string>;
+  abstract confirmWithText(text: string, title?: string, confirmText?: string);
 }

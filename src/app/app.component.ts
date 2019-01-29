@@ -3,6 +3,7 @@ import { delay } from './utils';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { INotificationService } from 'projects/ngx-material-opiniated/src/public_api';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,23 @@ import { INotificationService } from 'projects/ngx-material-opiniated/src/public
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  themeClass: string;
 
-  themeClass = 'light-theme';
-
-  constructor(private http: HttpClient, private notif: INotificationService) {
+  constructor(private http: HttpClient, private notif: INotificationService, private overlayContainer: OverlayContainer) {
+    this.setTheme('light-theme');
   }
+  setTheme(effectiveTheme: string): any {
+    const classList = this.overlayContainer.getContainerElement().classList;
+    const toRemove = Array.from(classList).filter((item: string) =>
+      item.includes('-theme')
+    );
+    if (toRemove.length) {
+      classList.remove(...toRemove);
+    }
+    classList.add(effectiveTheme);
+    this.themeClass = effectiveTheme;
+  }
+
 
   typeaheadSuggest = (text: string) => this.http.get<any[]>('https://restcountries.eu/rest/v2/name/' + encodeURIComponent(text))
         .pipe(map(x => x.slice(0, 5)))
