@@ -2,6 +2,7 @@
     <input matInput
         [matAutocomplete]="auto"
         [placeholder]="placeholder"
+        [disabled]="status === 'init'"
         #input=""
         [formControl]="searchControl"
         (blur)="onBlur()"
@@ -10,7 +11,7 @@
     <button *ngIf="create && status === 'ready'" mat-button matSuffix mat-icon-button matTooltip="Create" (click)="onCreate()">
         <fa-icon [icon]="faPlus"></fa-icon>
     </button>
-    <span *ngIf="status === 'searching'" matSuffix>
+    <span *ngIf="status === 'searching' || status === 'init'" matSuffix>
         <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
     </span>
     <span *ngIf="status === 'error'" matSuffix>

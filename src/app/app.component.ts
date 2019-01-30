@@ -28,6 +28,8 @@ export class AppComponent {
     this.themeClass = effectiveTheme;
   }
 
+  typaheadInitial = () => this.http.get<any[]>('https://restcountries.eu/rest/v2/name/fra')
+        .pipe(map(x => x[0]))
 
   typeaheadSuggest = (text: string) => this.http.get<any[]>('https://restcountries.eu/rest/v2/name/' + encodeURIComponent(text))
         .pipe(map(x => x.slice(0, 5)))

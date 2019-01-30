@@ -154,7 +154,8 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         this._initialValue = toObservable(value);
         this.status = 'init';
         this._initialValue.subscribe(v => {
-            this.setValue(v);
+            this._value = v;
+            this.searchControl.setValue(v);
             this.status = 'ready';
         }, () => this.status = 'error');
     }
