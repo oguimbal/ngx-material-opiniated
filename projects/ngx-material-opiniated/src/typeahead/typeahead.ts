@@ -57,7 +57,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
     private _initialValue: Observable<T>;
     _createTag = {};
     creating = false;
-    status: 'init' | 'ready' | 'noResult' | 'error' | 'searching';
+    status: 'init' | 'ready' | 'error' | 'searching';
 
     filteredOptions = this.searchControl.valueChanges
         .pipe(
@@ -70,6 +70,8 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         );
 
     filter(val: string): Observable<T[]> {
+        if (val === '$empty$')
+            return;
         if (typeof val !== 'string') {
             val = '';
         }
@@ -85,7 +87,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         const ret = from(data)
             .pipe(catchError(x => {
                 this.status = 'error';
-                this.notif.error(x);
+                // this.notif.error(x);
                 return from([[]]);
             }));
         ret.subscribe(() => this.status = 'ready');
@@ -125,6 +127,14 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
         }
         if ('displayWithFn' in ch) {
             this.displayWithInternal = this.displayWithFn;
+        }
+        if ('source' in ch && this.searchWhenEmpty && !this.text) {
+            this.searchControl.setValue('$empty$');
+            this.searchControl.setValue('');
+        }
+        if ('searchWhenEmpty' in ch && this.source && !this.text) {
+            this.searchControl.setValue('$empty$');
+            this.searchControl.setValue('');
         }
     }
 

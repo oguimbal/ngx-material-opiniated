@@ -14,7 +14,7 @@
                                 placeholder="Search a country",
                                 [initialValue]="typaheadInitial",
                                 [create]="typeaheadCreate",
-                                (valueChange)="thValue=$event"
+                                (valueChange)="thValue=$event",
                                 displayWith="name")
                         ng-template(let-i="result")
                             img.flag([src]="i.flag")

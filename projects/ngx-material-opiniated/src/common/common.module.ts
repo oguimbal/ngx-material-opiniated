@@ -3,6 +3,7 @@ import { ContextMenuModule, ContextMenuService, IContextMenuOptions } from 'ngx-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faPencilAlt, faTrash, faPlus, faCalendar, faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 import { TemplateInjectorComponent } from './template-injector';
+import { FocusDirective } from './focus';
 
 library.add(
     faCheck,
@@ -16,7 +17,8 @@ library.add(
 
 @NgModule({
     declarations: [
-        TemplateInjectorComponent
+        TemplateInjectorComponent,
+        FocusDirective
     ],
     imports: [
         ContextMenuModule
@@ -26,6 +28,7 @@ library.add(
     exports: [
         ContextMenuModule
         , TemplateInjectorComponent
+        , FocusDirective
     ]
 })
 export class OpiniatedCommonModule {

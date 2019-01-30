@@ -14,7 +14,7 @@
     <span *ngIf="status === 'searching' || status === 'init'" matSuffix>
         <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
     </span>
-    <span *ngIf="status === 'error'" matSuffix>
+    <span *ngIf="status === 'error' || text && !create && !(filteredOptions | async).length" matSuffix>
         <fa-icon [icon]="faTimes" class="text-danger"></fa-icon>
     </span>
     <mat-autocomplete #auto="matAutocomplete"
