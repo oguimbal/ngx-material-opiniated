@@ -12,7 +12,8 @@ let opCnt = 0;
 })
 export class LoaderDirective {
   cref: ComponentRef<any>;
-  private _inline;
+  private _inline: boolean;
+  private _noPrefix: boolean;
 
   get loaderInline(): boolean {
     return this._inline;
@@ -23,6 +24,17 @@ export class LoaderDirective {
     this._inline = v;
     if (this.cref) this.cref.instance.inline = true;
   }
+
+  @Input()
+  set loaderNoPrefix(v: boolean) {
+    this._noPrefix = v;
+    if (this.cref) this.cref.instance.noPrefix = true;
+  }
+
+  get loaderNoPrefix() {
+    return this._noPrefix;
+  }
+  
   private isWaiting = true;
   private retryFn;
   private currentVal = null;
@@ -52,7 +64,7 @@ export class LoaderDirective {
       return;
     }
 
-    if (typeof val.toPromise === 'function') 
+    if (typeof val.toPromise === 'function')
       val = val.toPromise();
 
     if (typeof val.then === 'function') {
@@ -118,6 +130,7 @@ export class LoaderDirective {
     const cref = (this.cref = this._viewContainer.createComponent(factory, 0));
     cref.instance.what = this._what;
     cref.instance.inline = this.loaderInline;
+    cref.instance.noPrefix = this.loaderNoPrefix;
     cref.instance.retry = !this.retryFn
       ? null
       : () => (this.loader = this.retryFn);
@@ -156,5 +169,6 @@ export class LoaderDirective {
     const cref = (this.cref = this._viewContainer.createComponent(factory, 0));
     cref.instance.what = this._what;
     cref.instance.inline = this.loaderInline;
+    cref.instance.noPrefix = this.loaderNoPrefix;
   }
 }

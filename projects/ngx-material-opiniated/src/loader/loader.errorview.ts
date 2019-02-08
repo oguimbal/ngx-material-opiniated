@@ -16,4 +16,6 @@ export class LoaderErrorViewComponent {
 
   @HostBinding('class.inline')
   inline = false;
+  
+  noPrefix = false;
 }

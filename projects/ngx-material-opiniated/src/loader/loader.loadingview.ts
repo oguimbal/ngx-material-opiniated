@@ -9,6 +9,9 @@ export class LoaderLoadingViewComponent {
   @Input()
   what: string;
 
+  @Input()
+  noPrefix: boolean;
+
   @HostBinding('class.inline')
   inline = false;
 }
