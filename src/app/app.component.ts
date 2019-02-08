@@ -53,6 +53,26 @@ export class AppComponent {
     gridSource = () => [
       {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
       {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') },
+      {item: 'Rice', commestible: true, price: {cur: 'EUR', amt: 3.5}, buy: () => this.notif.info('你是中囯的吗') },
+      {item: 'Macbook', price: {cur: 'USD', amt: 125443.5}, buy: () => this.notif.error('Congrats, Apple now owns your life.') }
   ]
 
   // tslint:disable-next-line: member-ordering

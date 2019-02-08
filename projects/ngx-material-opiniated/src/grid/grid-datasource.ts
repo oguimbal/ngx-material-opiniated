@@ -191,6 +191,10 @@ export class Column {
 }
 
 export class DataSource {
+    private _totalCount: number;
+    get totalCount() {
+        return this._totalCount;
+    }
     get data(): any[] {
         // if (!this._data) {
         //     if (this.isLoading || this.error)
@@ -308,22 +312,10 @@ export class DataSource {
             retreivePaged = () => retreiveSorted()
                 .then(data => {
                     // page by number
+                    this._totalCount = data.length;
                     if (!this.pageBy) {
                         const page = parseInt(<any>this.page, 10);
                         const paged = data.slice(page * this.pageLength, (page + 1) * this.pageLength);
-                        const maxPage = Math.floor(data.length / this.pageLength);
-                        const npage = 2;
-                        const allpages = range(Math.max(page - npage, 0), Math.min(page + npage, maxPage));
-                        if (allpages[0] === 1)
-                            allpages.splice(0, 0, 0);
-                        if (allpages[allpages.length - 1] === maxPage - 1)
-                            allpages.push(maxPage);
-
-                        this.pages = allpages.map(p => ({ id: p, name: p + 1 }));
-                        if (allpages[0] !== 0)
-                            this.pages.splice(0, 0, { name: '1', id: 0 }, { name: '...' , disabled: true});
-                        if (allpages[allpages.length - 1] !== maxPage)
-                            this.pages.push({ name: '...', disabled: true }, { name: maxPage + 1, id: maxPage });
                         return paged;
                     }
                     // page by alphabetic key
@@ -377,7 +369,7 @@ export class DataSource {
     private columnByKey: {[key: string]: Column} = {};
     refreshData: () => void = null;
     isLoading = 0;
-    pages = [];
+    
     private _pageBy = null;
 
     private _data = null;

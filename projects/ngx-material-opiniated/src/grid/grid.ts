@@ -220,11 +220,8 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
 
     get source() { return this._source; }
 
-    @Input()
-    get pages(): any[] {
-        if (!this.data)
-            return [];
-        return this.data.pages;
+    get totalCount() {
+        return this.data.totalCount;
     }
 
     get searchText() {

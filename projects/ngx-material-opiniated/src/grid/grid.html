@@ -28,7 +28,11 @@
         <btn class="sm" (clicked)="onAdd($event)" type="stroked" icon="plus"> {{canAddText}}</btn>
     </div>
 </div>
-  <!-- //- .text-center([hidden]='pages.length<2')
-    ul.pagination.pagination-sm
-      li(*ngFor='let p of pages', [class.active]='data.page==p.id', [class.disabled]='p.disabled')
-        a((click)='gotoPage(p.id)') {{p.name}} -->
+<div class="paginator-container" [hidden]="totalCount < pageLength">
+    
+    <mat-paginator [length]="totalCount" [pageSize]="pageLength" (page)="gotoPage($event.pageIndex)">
+    </mat-paginator>
+    <!-- <ul class="pagination pagination-sm">
+        <li *ngFor="let p of pages" [class.active]="data.page==p.id" [class.disabled]="p.disabled"><a (click)="gotoPage(p.id)">{{p.name}}</a></li>
+    </ul> -->
+</div>
