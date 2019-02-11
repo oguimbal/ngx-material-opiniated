@@ -23,7 +23,7 @@
         </ng-container>
         <context-menu #emptyContextMenu></context-menu>
     </table>
-    <div class="text-center lead" *ngIf="lines &amp;&amp; !lines.length" i18n="@@Grid.NoData">No data to display</div>
+    <div class="text-center lead" *ngIf="lines && !lines.length" i18n="@@Grid.NoData">No data to display</div>
     <div class="text-center" *ngIf="canAdd">
         <btn class="sm" (clicked)="onAdd($event)" type="stroked" icon="plus"> {{canAddText}}</btn>
     </div>

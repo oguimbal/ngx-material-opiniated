@@ -13,6 +13,12 @@ import { delay } from '@oguimbal/utilities';
 export class AppComponent {
   themeClass: string;
 
+  // text action
+  btnAction = async (txt) => {
+      await delay(1000);
+      this.notif.success('Created ' + txt);
+  }
+
   constructor(private http: HttpClient, private notif: INotificationService, private overlayContainer: OverlayContainer) {
     this.setTheme('light-theme');
   }

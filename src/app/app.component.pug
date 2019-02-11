@@ -3,7 +3,7 @@
         .col-md-6
             mat-card
                 mat-card-title Text
-                txt([validator]="validate", placeholder="Your field", info="Some tip to fill that")
+                txt(#txt, [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
                 txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
 
         .col-md-6

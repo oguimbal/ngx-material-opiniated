@@ -80,6 +80,12 @@ export class TextComponent implements ControlValueAccessor {
     keyup = new EventEmitter<any>();
     @Output()
     blur = new EventEmitter<any>();
+    @Input()
+    action: (text: string) => Promise<void> | void;
+    @Input()
+    actionName: string;
+    @Input()
+    actionIcon = 'plus';
 
     matcher = new StateMatcher(this);
     // http: // almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel
@@ -226,6 +232,10 @@ export class TextComponent implements ControlValueAccessor {
     // From ControlValueAccessor interface
     registerOnTouched(fn: any) {
         this.onTouchedCallback = fn;
+    }
+
+    performAction = () => {
+        return this.action(this.value);
     }
 
 }

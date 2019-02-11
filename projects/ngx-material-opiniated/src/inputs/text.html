@@ -1,12 +1,31 @@
 <mat-form-field>
-    <div *ngIf="loading" matPrefix="matPrefix">
+    <div *ngIf="loading">
         <div class="loader"></div>
-    </div><input #nti matInput="matInput" [type]="type" [name]="name" [(ngModel)]="value" [class.validating]="isValidating||error||loading||errorBarWidth"
-        (blur)="onBlur()" (focus)="focused.emit()" [placeholder]="placeholder" (keydown)="onKeyDown($event)"
-        [errorStateMatcher]="matcher" (keyup)="onKeyUp($event)" [readonly]="readonly" [disabled]="disabled" />
-    <div class="checkvalid" *ngIf="!isValidating &amp;&amp; !loading &amp;&amp; !error &amp;&amp; validator &amp;&amp; value || icon"
-        [style.color]="iconColor" matSuffix="matSuffix"><i [class]="icon||'fa fa-check'"></i></div>
+    </div>
+    <input #nti
+        matInput="matInput"
+        [type]="type"
+        [name]="name"
+        [(ngModel)]="value"
+        [class.validating]="isValidating||error||loading||errorBarWidth"
+        (blur)="onBlur()"
+        (focus)="focused.emit()"
+        [placeholder]="placeholder"
+        (keydown)="onKeyDown($event)"
+        [errorStateMatcher]="matcher"
+        (keyup)="onKeyUp($event)"
+        [readonly]="readonly"
+        [disabled]="disabled" />
+    <div *ngIf="!isValidating && !loading && !error && validator && value || icon"
+        class="checkvalid"
+        [style.color]="iconColor"
+        matSuffix>
+        <i [class]="icon||'fa fa-check'"></i>
+    </div>
+    <div *ngIf="action" matSuffix>
+        <btn type="icon" [icon]="actionIcon" [action]="performAction" [matTooltip]="actionName"></btn>
+    </div>
     <mat-error *ngIf="error">{{error}}</mat-error>
-    <mat-hint *ngIf="!error &amp;&amp; isValidating">Validating...</mat-hint>
-    <mat-hint *ngIf="!error &amp;&amp; info &amp;&amp; !isValidating">{{info}}</mat-hint>
+    <mat-hint *ngIf="!error && isValidating">Validating...</mat-hint>
+    <mat-hint *ngIf="!error && info && !isValidating">{{info}}</mat-hint>
 </mat-form-field>

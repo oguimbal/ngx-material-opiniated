@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule } from '@angular/material';
+import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextComponent } from './text';
@@ -35,6 +35,7 @@ const Components = [
     OwlNativeDateTimeModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatTooltipModule,
     OpiniatedCommonModule.forChild()
   ],
   exports: [...Components],
