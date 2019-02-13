@@ -4,6 +4,7 @@
             mat-card
                 mat-card-title Text
                 txt(#txt, [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
+                    div Custom prefix   
                 txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
 
         .col-md-6

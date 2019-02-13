@@ -147,9 +147,14 @@ export class TextComponent implements ControlValueAccessor {
         $event.cancelBubble = true; // useful to prevent document: keyup catching CTRL+A (see file-explorer.ts)
     }
 
-    private async triggerChange(v: string) {
+    private triggerChange(v: string) {
         this.onChangeCallback(v);
         this.valueChange.emit(v);
+        return this.launchValidation();
+    }
+
+    async launchValidation() {
+        const v = this.innerValue;
         if (!this.validator) {
             return;
         }

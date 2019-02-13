@@ -24,15 +24,15 @@
         <context-menu #emptyContextMenu></context-menu>
     </table>
     <div class="text-center lead" *ngIf="lines && !lines.length" i18n="@@Grid.NoData">No data to display</div>
+    <div class="paginator-container" *ngIf="totalCount > pageLength">
+        
+        <mat-paginator [length]="totalCount" [pageSize]="pageLength" (page)="gotoPage($event.pageIndex)">
+        </mat-paginator>
+        <!-- <ul class="pagination pagination-sm">
+            <li *ngFor="let p of pages" [class.active]="data.page==p.id" [class.disabled]="p.disabled"><a (click)="gotoPage(p.id)">{{p.name}}</a></li>
+        </ul> -->
+    </div>
     <div class="text-center" *ngIf="canAdd">
         <btn class="sm" (clicked)="onAdd($event)" type="stroked" icon="plus"> {{canAddText}}</btn>
     </div>
-</div>
-<div class="paginator-container" [hidden]="totalCount < pageLength">
-    
-    <mat-paginator [length]="totalCount" [pageSize]="pageLength" (page)="gotoPage($event.pageIndex)">
-    </mat-paginator>
-    <!-- <ul class="pagination pagination-sm">
-        <li *ngFor="let p of pages" [class.active]="data.page==p.id" [class.disabled]="p.disabled"><a (click)="gotoPage(p.id)">{{p.name}}</a></li>
-    </ul> -->
 </div>

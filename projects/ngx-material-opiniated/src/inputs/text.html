@@ -2,6 +2,9 @@
     <div *ngIf="loading">
         <div class="loader"></div>
     </div>
+    <div matPrefix>
+        <ng-content></ng-content>
+    </div>
     <input #nti
         matInput="matInput"
         [type]="type"

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-    selector: 'label',
+    selector: 'text-label',
     template: '{{value}}',
     styles: ['white-space:nowrap;'],
 })
