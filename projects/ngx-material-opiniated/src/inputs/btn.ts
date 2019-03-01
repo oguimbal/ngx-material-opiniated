@@ -1,4 +1,4 @@
-﻿import {Component, EventEmitter, OnDestroy, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef, Input, Output, HostListener, OnChanges} from '@angular/core';
+﻿import {Component, EventEmitter, OnDestroy, ViewChild, AfterViewInit, ChangeDetectorRef, ElementRef, Input, Output, HostListener, OnChanges, ChangeDetectionStrategy} from '@angular/core';
 import { INotificationService } from '../services';
 
 /**
@@ -10,8 +10,9 @@ import { INotificationService } from '../services';
     selector: 'btn,a.linkBtn',
     styleUrls: ['./btn.scss'],
     templateUrl: './btn.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BtnComponent implements OnDestroy, AfterViewInit, OnChanges {
+export class BtnComponent {
 
     @Input()
     icon: string;
@@ -30,9 +31,6 @@ export class BtnComponent implements OnDestroy, AfterViewInit, OnChanges {
 
     @Output()
     clicked = new EventEmitter();
-    noContent: boolean;
-    btnClass: string;
-    @ViewChild('btnContent') content;
 
     constructor(private cdRef: ChangeDetectorRef
         , private notif: INotificationService
@@ -77,20 +75,5 @@ export class BtnComponent implements OnDestroy, AfterViewInit, OnChanges {
                 this.cdRef.detectChanges();
         }
         return;
-    }
-
-    ngOnDestroy() {
-        this.action = null;
-    }
-
-    ngAfterViewInit(): void {
-        this.noContent = this.content
-            && this.content.nativeElement
-            && !this.content.nativeElement.children.length
-            && !this.content.nativeElement.textContent;
-        this.cdRef.detectChanges();
-    }
-
-    ngOnChanges() {
     }
 }
