@@ -12,7 +12,7 @@ import { INotificationService } from '../services';
     templateUrl: './btn.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BtnComponent {
+export class BtnComponent implements OnDestroy {
 
     @Input()
     icon: string;
@@ -61,6 +61,10 @@ export class BtnComponent {
         }
         prevent();
         this.clicked.emit($event);
+    }
+
+    ngOnDestroy() {
+        this.action = null; // required (see startAction())
     }
 
     private async startAction() {

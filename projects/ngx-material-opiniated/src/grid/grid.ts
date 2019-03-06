@@ -218,6 +218,10 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
             this.data.page = pageId;
     }
 
+    get currentPage() {
+        return parseInt(<string>this.data.page, 10);
+    }
+
     get source() { return this._source; }
 
     get totalCount() {

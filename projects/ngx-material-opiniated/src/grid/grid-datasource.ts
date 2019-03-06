@@ -369,7 +369,7 @@ export class DataSource {
     private columnByKey: {[key: string]: Column} = {};
     refreshData: () => void = null;
     isLoading = 0;
-    
+
     private _pageBy = null;
 
     private _data = null;
@@ -500,7 +500,6 @@ export class DataSource {
             }
             const col = new Column(this, () => {
                 this.cachedFilter = null;
-                this._searchText = '';
             }, key, strong, stat.nullable);
             this.columns.push(col);
             this.columnByKey[key] = col;

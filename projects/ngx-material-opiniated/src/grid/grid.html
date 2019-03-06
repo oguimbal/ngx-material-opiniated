@@ -26,7 +26,7 @@
     <div class="text-center lead" *ngIf="lines && !lines.length" i18n="@@Grid.NoData">No data to display</div>
     <div class="paginator-container" *ngIf="totalCount > pageLength">
         
-        <mat-paginator [length]="totalCount" [pageSize]="pageLength" (page)="gotoPage($event.pageIndex)">
+        <mat-paginator [length]="totalCount" [pageSize]="pageLength" [pageIndex]="currentPage" (page)="gotoPage($event.pageIndex)">
         </mat-paginator>
         <!-- <ul class="pagination pagination-sm">
             <li *ngFor="let p of pages" [class.active]="data.page==p.id" [class.disabled]="p.disabled"><a (click)="gotoPage(p.id)">{{p.name}}</a></li>
