@@ -13,6 +13,8 @@ import { delay } from '@oguimbal/utilities';
 export class AppComponent {
   themeClass: string;
 
+  phoneNumber: string;
+
   // text action
   btnAction = async (txt) => {
       await delay(1000);

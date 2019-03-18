@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faPencilAlt, faTrash, faPlus, faCalendar, faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 import { TemplateInjectorComponent } from './template-injector';
 import { FocusDirective } from './focus';
+import { OnlyNumberDirective } from './only-number';
 
 library.add(
     faCheck,
@@ -18,7 +19,8 @@ library.add(
 @NgModule({
     declarations: [
         TemplateInjectorComponent,
-        FocusDirective
+        FocusDirective,
+        OnlyNumberDirective
     ],
     imports: [
         ContextMenuModule
@@ -29,6 +31,7 @@ library.add(
         ContextMenuModule
         , TemplateInjectorComponent
         , FocusDirective
+        , OnlyNumberDirective
     ]
 })
 export class OpiniatedCommonModule {
