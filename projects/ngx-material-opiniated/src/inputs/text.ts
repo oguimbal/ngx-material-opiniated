@@ -86,6 +86,8 @@ export class TextComponent implements ControlValueAccessor {
     actionName: string;
     @Input()
     actionIcon = 'plus';
+    @Input()
+    multiline = false;
 
     matcher = new StateMatcher(this);
     // http: // almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel

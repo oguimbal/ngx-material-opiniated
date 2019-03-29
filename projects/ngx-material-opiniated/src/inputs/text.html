@@ -5,20 +5,38 @@
     <div matPrefix>
         <ng-content></ng-content>
     </div>
-    <input #nti
-        matInput="matInput"
-        [type]="type"
-        [name]="name"
-        [(ngModel)]="value"
-        [class.validating]="isValidating||error||loading||errorBarWidth"
-        (blur)="onBlur()"
-        (focus)="focused.emit()"
-        [placeholder]="placeholder"
-        (keydown)="onKeyDown($event)"
-        [errorStateMatcher]="matcher"
-        (keyup)="onKeyUp($event)"
-        [readonly]="readonly"
-        [disabled]="disabled" />
+    <ng-container *ngIf="multiline">
+        <input #nti
+            matInput
+            [type]="type"
+            [name]="name"
+            [(ngModel)]="value"
+            [class.validating]="isValidating||error||loading||errorBarWidth"
+            (blur)="onBlur()"
+            (focus)="focused.emit()"
+            [placeholder]="placeholder"
+            (keydown)="onKeyDown($event)"
+            [errorStateMatcher]="matcher"
+            (keyup)="onKeyUp($event)"
+            [readonly]="readonly"
+            [disabled]="disabled" />
+    </ng-container>
+    <ng-container *ngIf="multiline">
+        <textarea #nti
+            matInput
+            [name]="name"
+            [(ngModel)]="value"
+            [class.validating]="isValidating||error||loading||errorBarWidth"
+            (blur)="onBlur()"
+            (focus)="focused.emit()"
+            [placeholder]="placeholder"
+            (keydown)="onKeyDown($event)"
+            [errorStateMatcher]="matcher"
+            (keyup)="onKeyUp($event)"
+            [readonly]="readonly"
+            [disabled]="disabled">
+            </textarea>
+    </ng-container>
     <div *ngIf="!isValidating && !loading && !error && validator && value || icon"
         class="checkvalid"
         [style.color]="iconColor"
