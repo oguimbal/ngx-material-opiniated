@@ -1,6 +1,6 @@
 {
   "name": "ngx-material-opiniated",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Opiniated Angular Material components (Typeahead, Grid, Buttons, ...)",
   "keywords": [
     "ngx",
@@ -18,7 +18,8 @@
     "@angular/common": ">=7.x",
     "@angular/core": ">=7.x",
     "@angular/material": ">=7.x",
-    "moment": ">=2.x"
+    "moment": ">=2.x",
+    "google-libphonenumber": ">=3.2.2"
   },
   "dependencies": {
     "@oguimbal/utilities": ">=2.0.0",
@@ -26,7 +27,6 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.12",
     "@fortawesome/free-solid-svg-icons": ">=5.6.3",
     "ngx-contextmenu": ">=5.x",
-    "ng-pick-datetime": ">=7.0.0",
-    "google-libphonenumber": "^3.2.2"
+    "ng-pick-datetime": ">=7.0.0"
   }
 }

@@ -1,4 +1,4 @@
-﻿import {Component, EventEmitter, forwardRef, ViewChild, ElementRef, Output, HostListener, HostBinding, Input, Renderer2, ChangeDetectorRef} from '@angular/core';
+﻿import {Component, EventEmitter, forwardRef, ViewChild, ElementRef, Output, HostListener, HostBinding, Input, Renderer2, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import {delay} from '@oguimbal/utilities';
 import { ErrorStateMatcher } from '@angular/material';
@@ -34,6 +34,7 @@ export class StateMatcher implements ErrorStateMatcher {
     selector: 'txt',
     styleUrls: ['./text.scss'],
     templateUrl: './text.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TEXT_VALUE_ACCESSOR]
 })
 export class TextComponent implements ControlValueAccessor {
@@ -170,7 +171,9 @@ export class TextComponent implements ControlValueAccessor {
             if (this.isPromiseValidator) {
                 // throttle if previously returned a promise
                 this.isValidating = true;
+                this.cd.detectChanges();
                 await delay(200);
+                this.cd.detectChanges();
                 if (this.innerValue !== v) {
                     return;
                 }

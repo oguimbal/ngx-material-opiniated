@@ -5,7 +5,7 @@
     <div matPrefix>
         <ng-content></ng-content>
     </div>
-    <ng-container *ngIf="multiline">
+    <ng-container *ngIf="!multiline">
         <input #nti
             matInput
             [type]="type"
@@ -24,6 +24,7 @@
     <ng-container *ngIf="multiline">
         <textarea #nti
             matInput
+            cdkTextareaAutosize
             [name]="name"
             [(ngModel)]="value"
             [class.validating]="isValidating||error||loading||errorBarWidth"
@@ -47,6 +48,5 @@
         <btn type="icon" [icon]="actionIcon" [action]="performAction" [matTooltip]="actionName"></btn>
     </div>
     <mat-error *ngIf="error">{{error}}</mat-error>
-    <mat-hint *ngIf="!error && isValidating">Validating...</mat-hint>
-    <mat-hint *ngIf="!error && info && !isValidating">{{info}}</mat-hint>
+    <mat-hint>{{ !error && isValidating ? 'Validating...' : info || ''}}</mat-hint>
 </mat-form-field>

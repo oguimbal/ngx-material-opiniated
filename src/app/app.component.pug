@@ -6,12 +6,14 @@
                 txt(#txt, [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
                     div Custom prefix   
                 txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
+                txt(#txt, [multiline]="true", [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
+                    div Text area !
 
         .col-md-6
             mat-card
                 mat-card-title Typeahead
 
-                    typeahead([source]="typeaheadSuggest",
+                    //- typeahead([source]="typeaheadSuggest",
                                 placeholder="Search a country",
                                 [initialValue]="typaheadInitial",
                                 [create]="typeaheadCreate",
