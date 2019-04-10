@@ -7,7 +7,7 @@
         cursor: pointer;
     }
 }
-:host /deep/ {
+:host ::ng-deep {
     table {
         width: 100%;
     }
@@ -60,7 +60,7 @@
     margin-bottom: 1em;
 }
 
-:host.tight /deep/ .table td {
+:host.tight ::ng-deep .table td {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }

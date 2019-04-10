@@ -55,23 +55,23 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.10.0",
-    "@angular-devkit/build-ng-packagr": "~0.10.0",
-    "@angular/cli": "~7.0.6",
-    "@angular/compiler-cli": "~7.0.0",
+    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-ng-packagr": "^0.12.1",
+    "@angular/cli": "^7.3.8",
+    "@angular/compiler-cli": "^7.2.12",
     "@angular/language-service": "~7.0.0",
     "@types/moment": "^2.13.0",
     "@types/node": "~8.9.4",
     "apply-loader": "^2.0.0",
     "codelyzer": "~4.5.0",
-    "ng-packagr": "^4.2.0",
+    "ng-packagr": "^5.0.1",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "scss-bundle": "^2.4.0",
     "ts-node": "~7.0.0",
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
-    "tslint": "~5.11.0",
+    "tslint": "^5.15.0",
     "typescript": "~3.1.6"
   }
 }
