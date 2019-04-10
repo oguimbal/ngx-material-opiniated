@@ -32,7 +32,13 @@
             mat-card
                 mat-card-title Datetime
                 datetime(placeholder="Your date")
+                datetime(placeholder="Your date dialog", dialog="true")
+                datetime(placeholder="Your date + time", pickerType="both")
+                datetime(placeholder="Your time", pickerType="timer")
                 datetime(placeholder="Your disabled date", [disabled]="true")
+                div 
+                    div Inline:
+                    datetime(inline="true", placeholder="Your date")
         .col-md-6
             mat-card
                 mat-card-title Phone number

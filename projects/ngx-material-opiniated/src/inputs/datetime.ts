@@ -28,7 +28,10 @@ export class DateTimeComponent implements OnInit, OnChanges {
     readonly: boolean;
 
     @Input()
-    pickerType: 'both' | 'calendar' | 'timer' = 'both';
+    dialog = false;
+
+    @Input()
+    pickerType: 'both' | 'calendar' | 'timer' = 'calendar';
 
     valueInternal: Date;
 

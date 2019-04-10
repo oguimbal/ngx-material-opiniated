@@ -1,7 +1,7 @@
 <!-- //- https://danielykpan.github.io/date-time-picker/ -->
-<div class="form-group" [class.inline]="inline">
+<div class="form-group" [class.inline]="inline" *ngIf="!inline">
     <mat-form-field><span class="input-group-addon name" matPrefix="matPrefix" *ngIf="name">{{name}}</span>
-        <owl-date-time [pickerMode]="'dialog'" [pickerType]="pickerType" #dtRef></owl-date-time><input class="form-control" matInput="matInput"
+        <owl-date-time [pickerMode]="dialog ? 'dialog' : 'popup'" [pickerType]="pickerType" #dtRef></owl-date-time><input class="form-control" matInput="matInput"
             [owlDateTimeTrigger]="dtRef" (ngModelChange)="onDateChange($event)" [ngModel]="valueInternal" [placeholder]="placeholder"
             [readonly]="readonly" [disabled]="readonly || disabled" [owlDateTime]="dtRef" /><span class="input-group-addon"
             matSuffix="matSuffix">
@@ -9,3 +9,4 @@
         </span>
     </mat-form-field>
 </div>
+<owl-date-time-inline [disabled]="readonly || disabled"  (ngModelChange)="onDateChange($event)" [ngModel]="valueInternal"  [pickerType]="pickerType" *ngIf="inline"></owl-date-time-inline>
