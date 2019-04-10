@@ -13,15 +13,7 @@ Import using `OpiniatedNotificationModule` on your root module.
 
 Example (html)
 ```html
- <btn [action]="promiseAction" icon="check"> Click for action </btn>
-```
-
-(ts)
-```typescript
- promiseAction = async () => {
-     // do something asynchronously.
-     // if promise throws, then an error toaest will be shown
- }
+ <txt [(ngModel)]="value" icon="check"></txt>
 ```
 
 [Source is here](https://github.com/oguimbal/ngx-material-opiniated/blob/master/projects/ngx-material-opiniated/src/inputs/text.ts)
