@@ -9,6 +9,8 @@ Import using `OpiniatedNotificationModule` on your root module.
 
 ### txt
 
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/text.png)
+
 Example (html)
 ```html
  <btn [action]="promiseAction" icon="check"> Click for action </btn>
@@ -57,6 +59,9 @@ Event | Event type | Description
 
 ### datetime
 
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/datetime.png)
+
 Uses [ng-pick-datetime](https://github.com/DanielYKPan/date-time-picker)
 
 Example (html)
@@ -89,6 +94,10 @@ A simple checkbox. Usage:
 
 ### btn
 
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/button-still.png)
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/button.png)
+
 A material button with lots of functionalities
 
 
@@ -119,6 +128,9 @@ type | `'stroked' \| 'raised' \| 'icon' \| 'flat' \| 'basic' \| 'fab' \| 'minifa
 
 
 ## OpiniatedNotificationModule
+
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/toast.png)
 
 Provides a way to inject a notification service
 
@@ -169,6 +181,9 @@ class MyComponent {
 ```
 
 ## OpiniatedTypeaheadModule
+
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/typeahead.png)
 
 A typeahead, 2 lines setup.
 
@@ -230,6 +245,8 @@ Event | Event type | Description
 
 
 ## OpiniatedPhoneModule
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/phone.png)
 
 A phone input.
 
@@ -299,6 +316,9 @@ Show what is currently loading, without prefix (will only show "some content" wh
 
 
 ## OpiniatedGridModule
+
+
+![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/grid.png)
 
 A balzingly fast-to-setup grid
 
