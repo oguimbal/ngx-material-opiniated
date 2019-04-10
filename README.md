@@ -1,13 +1,14 @@
 # Demo [See it in action here](https://oguimbal.github.io/ngx-material-opiniated/index.html)
 
 
-# Modules
 
-## OpiniatedInputsModule
+# Inputs & common components (OpiniatedInputsModule)
 
 Import using `OpiniatedNotificationModule` on your root module.
 
-### txt
+## Textbox/textarea: txt
+
+### Usage
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/text.png)
 
@@ -18,7 +19,7 @@ Example (html)
 
 [Source is here](https://github.com/oguimbal/ngx-material-opiniated/blob/master/projects/ngx-material-opiniated/src/inputs/text.ts)
 
-**Properties**
+### Inputs
 
 Property | Type | Description
 --- | --- | ---
@@ -37,7 +38,7 @@ action | `(value: string) => void \| Promise<void>` | If present, then a button 
 actionIcon | `text` | Similar to `icon` but for the action button
 
 
-**Events**
+### Events
 
 Event | Event type | Description
 --- | --- | ---
@@ -49,8 +50,9 @@ Event | Event type | Description
 
 
 
-### datetime
+## Date time picker: datetime
 
+### Usage
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/datetime.png)
 
@@ -60,6 +62,8 @@ Example (html)
 ```html
  <datetime [(value)]="myDate" ></datetime>
 ```
+
+### Inputs
 
 Property | Type | Description
 --- | --- | ---
@@ -76,7 +80,7 @@ pickerType | `'both' \| 'calendar' \| 'timer'` | Picker type (defaults to `calen
 type | `'date' \| 'moment'` | Which kind of date representation to use (defaults to `moment`)
 
 
-### check
+## Checkbox:  check
 
 A simple checkbox. Usage:
 
@@ -84,8 +88,9 @@ A simple checkbox. Usage:
  <check [(value)]="myDate" [readonly]="true" ></check>
 ```
 
-### btn
+## Button (with loader actions):  btn
 
+## Usage
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/button-still.png)
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/button.png)
@@ -108,6 +113,8 @@ A material button with lots of functionalities
  }
 ```
 
+### Inputs
+
 Property | Type | Description
 --- | --- | ---
 action | `() => void \| Promise<void>` | An action that will be performed when the button is clicked. A spinning wheel will be shown while this action is performed, and an error toast will pop if it fails. The button will not be clickable meanwhile.
@@ -119,7 +126,7 @@ type | `'stroked' \| 'raised' \| 'icon' \| 'flat' \| 'basic' \| 'fab' \| 'minifa
 
 
 
-## OpiniatedNotificationModule
+# Notifications / Prompt / Toasts (OpiniatedNotificationModule)
 
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/toast.png)
@@ -172,7 +179,7 @@ class MyComponent {
 }
 ```
 
-## OpiniatedTypeaheadModule
+# Typeahead / Suggested options  (OpiniatedTypeaheadModule)
 
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/typeahead.png)
@@ -181,7 +188,7 @@ A typeahead, 2 lines setup.
 
 [Source is here](https://github.com/oguimbal/ngx-material-opiniated/blob/master/projects/ngx-material-opiniated/src/typeahead/typeahead.ts)
 
-### Usage
+## Usage
 
 
 ```html
@@ -194,13 +201,13 @@ A typeahead, 2 lines setup.
     </typeahead>
 ```
 
-### ... static data source
+## ... static data source
 ```typescript
     myDataSource = [{name: 'Country 1'}, {name: 'Country 2'}, {name: 'Country 3'}]
 ```
 
 
-### ... code data-source
+## ... code data-source
 
 ```typescript
 
@@ -216,7 +223,7 @@ A typeahead, 2 lines setup.
 
 ```
 
-### Properties
+## Inputs
 
 Property | Type | Description
 --- | --- | ---
@@ -228,7 +235,7 @@ create | `(text: string) => Promise<T>` | If provided, then a "create" button wi
 
 
 
-### Events
+## Events
 Event | Event type | Description
 (valueChange) | T | Called when user selects an option
 (blur) | - | Called when the typeahead loses focus
@@ -236,7 +243,7 @@ Event | Event type | Description
 
 
 
-## OpiniatedPhoneModule
+# Phone input (OpiniatedPhoneModule)
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/phone.png)
 
@@ -248,21 +255,21 @@ This input is an adaptation of [this one](https://github.com/nikhiln/ngx-interna
 
 **WARNING:** This library imports `google-libphonenumber`, which is a bit heavy (several 100's kB)
 
-### Usage
+## Usage
 
 ```html
     <phone-number [defaultCountry]="'fr'" [(ngModel)]="phoneNumber"></phone-number>
 ```
 
 
-## OpiniatedLoaderModule
+# Loader / spinner (OpiniatedLoaderModule)
 
 Provides a simple way to load things
 
 
 [Source is here](https://github.com/oguimbal/ngx-material-opiniated/blob/master/projects/ngx-material-opiniated/src/loader/loader.ts)
 
-### Usage
+## Usage
 
 ```html
 <div *loader="myLoader">
@@ -307,7 +314,7 @@ Show what is currently loading, without prefix (will only show "some content" wh
 
 
 
-## OpiniatedGridModule
+# Automatically generated grid (OpiniatedGridModule)
 
 
 ![alt text](https://raw.githubusercontent.com/oguimbal/ngx-material-opiniated/master/images/grid.png)
@@ -315,7 +322,7 @@ Show what is currently loading, without prefix (will only show "some content" wh
 A balzingly fast-to-setup grid
 
 
-### Basic usage
+## Basic usage
 
 ```html
 <grid [source]="gridSource" columns="item, price, buy, commestible"></grid>
@@ -332,7 +339,7 @@ A balzingly fast-to-setup grid
 
 ```
 
-### Auto supported types (automatically infered column types)
+## Auto supported types (automatically infered column types)
 
 **Basic types**: number, string, date
 
@@ -356,7 +363,7 @@ You can define custom display for some columns like that:
 Here, the column "item" will be shown using the given template.
 
 
-### Openable column details
+## Openable column details
 
 You can define templates that will make rows "open" when clicking on some columns.
 This is done like that:
@@ -372,7 +379,7 @@ This is done like that:
 
 Here, when clicking on "price", the row will open to show some details
 
-### Editability
+## Editability
 
 For a grid to be editable, you must set one or more of these properties on your grid: `onSave`, `onDelete`.
 
@@ -398,7 +405,7 @@ Moreover, if `canAdd` property is set, then a button will be displayed to add a 
 
 
 
-### Custom model
+## Custom model
 
 To have more control on how things are displayed, you can wrap your data items in "model" classes with custom decorators, like this one:
 
@@ -431,7 +438,7 @@ class MyItemModel {
 ```
 
 
-### Properties
+## Inputs
 
 Property | Type | Description
 --- | --- | ---
@@ -454,7 +461,7 @@ customFilter | `(search: string, item: any) => boolean` | A custom predicate to 
 
 
 
-### Events
+## Events
 
 Event | Event type | Description
 --- | --- | ---
