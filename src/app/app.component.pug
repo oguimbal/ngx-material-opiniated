@@ -1,19 +1,33 @@
 .container([class]="themeClass")
     .row
+        .col-md-12
+            mat-card
+                mat-card-title.center ngx-material-opiniated demo
+                mat-card-content.center
+                    div An helper library that simplifies much of your repetitive tasks using angular material
+                    div
+                        a(href="https://github.com/oguimbal/ngx-material-opiniated/blob/master/src/app/app.component.pug") Source of this page is here
+
+    .row
         .col-md-6
             mat-card
-                mat-card-title Text
-                txt(#txt, [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
-                    div Custom prefix   
-                txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
-                txt(#txt, [multiline]="true", [validator]="validate", placeholder="Your field", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
-                    div Text area !
+                mat-card-title Simple inputs
+                mat-card-content
+                    i.center You must import module OpiniatedInputsModule
+                    txt(#txt, [validator]="validate", placeholder="Type some text to test async validation", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
+                        div This is a custom prefix&nbsp;&nbsp;
+                    txt([disabled]="true", placeholder="Disabled", [ngModel]="'Some disabled value'")
+                    txt(#txt, [multiline]="true", [validator]="validate", placeholder="Will auto-resize on enter", info="Some tip to fill that", [action]="btnAction", [actionName]="'Create ' + txt.value")
+                        div This is a text area &nbsp;&nbsp;
+                check Some checkbox
 
         .col-md-6
             mat-card
                 mat-card-title Typeahead
+                mat-card-content
+                    i.center You must import module OpiniatedTypeaheadComponent
 
-                    //- typeahead([source]="typeaheadSuggest",
+                    typeahead([source]="typeaheadSuggest",
                                 placeholder="Search a country",
                                 [initialValue]="typaheadInitial",
                                 [create]="typeaheadCreate",
@@ -23,87 +37,93 @@
                             img.flag([src]="i.flag")
                             b {{i.name}}
                             span   (they speak {{i.languages[0].name}})
-                    //- div(*ngIf="thValue") Set to: {{thValue.name}}
-            mat-card
-                mat-card-title Checkbox
-                check Some checkbox
+                        //- div(*ngIf="thValue") Set to: {{thValue.name}}
     .row
         .col-md-6
             mat-card
                 mat-card-title Datetime
-                datetime(placeholder="Your date")
-                datetime(placeholder="Your date dialog", dialog="true")
-                datetime(placeholder="Your date + time", pickerType="both")
-                datetime(placeholder="Your time", pickerType="timer")
-                datetime(placeholder="Your disabled date", [disabled]="true")
-                div 
-                    div Inline:
-                    datetime(inline="true", placeholder="Your date")
+                mat-card-content
+                    i.center You must import module OpiniatedInputsModule
+                    datetime(placeholder="Your date")
+                    datetime(placeholder="Your date dialog", dialog="true")
+                    datetime(placeholder="Your date + time", pickerType="both")
+                    datetime(placeholder="Your time", pickerType="timer")
+                    datetime(placeholder="Your disabled date", [disabled]="true")
+                    div 
+                        div Inline:
+                        datetime(inline="true", placeholder="Your date")
         .col-md-6
             mat-card
                 mat-card-title Phone number
-                phone-number([defaultCountry]="'fr'", [(ngModel)]="phoneNumber")
+                mat-card-content
+                    i.center You must import module OpiniatedPhoneModule
+                    phone-number([defaultCountry]="'fr'", [(ngModel)]="phoneNumber")
     .row
         .col-md-6
             mat-card
                 mat-card-title Grid
-                //- Specifying 'columns' is optional (shows all, except those begining with $ or __)
-                //- Supported types that will be infered from data type:
-                //-    * text
-                //-    * number
-                //-    * boolean: shows a checkbox
-                //-    * money (if type {amt: string; cur: string})
-                //-    * action (if function): shows a button
-                grid([source]="gridSource", columns="item, price, buy, commestible")
+                mat-card-content
+                    i.center You must import module OpiniatedGridModule
+                    //- Specifying 'columns' is optional (shows all, except those begining with $ or __)
+                    //- Supported types that will be infered from data type:
+                    //-    * text
+                    //-    * number
+                    //-    * boolean: shows a checkbox
+                    //-    * money (if type {amt: string; cur: string})
+                    //-    * action (if function): shows a button
+                    grid([source]="gridSource", columns="item, price, buy, commestible")
 
-                    //- Custom template for a column
-                    ng-template(gridColumn="item", let-i)
-                        b {{i.item}}
-                        span(*ngIf="i.commestible")  (eat me !)
+                        //- Custom template for a column
+                        ng-template(gridColumn="item", let-i)
+                            b {{i.item}}
+                            span(*ngIf="i.commestible")  (eat me !)
 
-                    //- Open row when clicking on a column
-                    ng-template(gridOpenColumn="price", let-i)
-                        div You can buy {{i.item}} for almost nothing !
+                        //- Open row when clicking on a column
+                        ng-template(gridOpenColumn="price", let-i)
+                            div You can buy {{i.item}} for almost nothing !
 
-                .text-center
-                    i Tip: Click on an article price !
+                    .text-center
+                        i Tip: Click on an article price !
         .col-md-6
             mat-card
                 mat-card-title Editable grid
-                //- if 'onSave' property is specified, then the grid will be editable
-                grid([source]="editGridSource",
-                    [canSearch]="false",
-                    [onSave]="saveGridRow",
-                    canAdd="Add some weird personage",
-                    [onDelete]="deleteGridRow")
+                mat-card-content
+                    //- if 'onSave' property is specified, then the grid will be editable
+                    grid([source]="editGridSource",
+                        [canSearch]="false",
+                        [onSave]="saveGridRow",
+                        canAdd="Add some weird personage",
+                        [onDelete]="deleteGridRow")
 
     .row
         .col-md-6
             mat-card
                 mat-card-title Button
-                div Loader on network action:
-                btn([action]="longAction", icon="check") Click for action
+                mat-card-content
+                    i.center You must import module OpiniatedInputsModule
+                    div Loader on network action:
+                    btn([action]="longAction", icon="check") Click for action
 
-                div Automatic message on error:
-                btn([action]="errorAction") Click for error
+                    div Automatic message on error:
+                    btn([action]="errorAction") Click for error
 
-                div No content
-                btn([action]="longAction", icon="check")
+                    div No content
+                    btn([action]="longAction", icon="check")
 
-                div Colors
-                btn(color="primary", icon="check", [action]="longAction") primary
-                btn(color="accent", icon="check", [action]="longAction") accent
-                btn(color="warn", icon="check", [action]="longAction") warn
+                    div Colors
+                    btn(color="primary", icon="check", [action]="longAction") primary
+                    btn(color="accent", icon="check", [action]="longAction") accent
+                    btn(color="warn", icon="check", [action]="longAction") warn
 
-                div Types (primary color)
+                    div Types (primary color)
 
-                btn(icon="check", type="flat", color="primary", [action]="longAction") Flat
-                btn(icon="check", type="basic", color="primary", [action]="longAction") Basic
-                btn(icon="check", type="stroked", color="primary", [action]="longAction") Stroked
-                br
-                btn(icon="check", type="fab", color="primary", [action]="longAction")
-                | (fab)
-                btn(icon="check", type="minifab", color="primary", [action]="longAction")
-                | (mini fab)
-                btn(icon="check", type="icon", color="primary", [action]="longAction")
-                | (icon)
+                    btn(icon="check", type="flat", color="primary", [action]="longAction") Flat
+                    btn(icon="check", type="basic", color="primary", [action]="longAction") Basic
+                    btn(icon="check", type="stroked", color="primary", [action]="longAction") Stroked
+                    br
+                    btn(icon="check", type="fab", color="primary", [action]="longAction")
+                    | (fab)
+                    btn(icon="check", type="minifab", color="primary", [action]="longAction")
+                    | (mini fab)
+                    btn(icon="check", type="icon", color="primary", [action]="longAction")
+                    | (icon)

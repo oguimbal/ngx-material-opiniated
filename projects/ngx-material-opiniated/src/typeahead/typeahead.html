@@ -2,7 +2,6 @@
     <input matInput
         [matAutocomplete]="auto"
         [placeholder]="placeholder"
-        [disabled]="status === 'init'"
         #input=""
         [formControl]="searchControl"
         (blur)="onBlur()"

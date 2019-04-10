@@ -9,16 +9,21 @@ export interface IGridColumn {
     name?: string;
     type?: ColumnNativeType;
     customType?: IColumnType;
-    align?: Alignment; // default 'left'
+    /** default 'left' */
+    align?: Alignment;
     canSort?: boolean;
     canFilter?: boolean;
-    icon?: string; // for actions
-    color?: 'success' | 'danger' | 'cancel'; // for actions
+    /** for actions */
+    icon?: string;
+    /** for actions */
+    color?: 'success' | 'danger' | 'cancel';
+    /** for actions */
     canExecute?: (item) => boolean|'active'|'inactive'|'hide';
     readonly?: boolean;
     /** A custom argument, usable on custom column types initialization */
     arg?: any;
-    confirm?: { // for action
+    /** for actions */
+    confirm?: {
         title: string; yes: string;
     };
 }

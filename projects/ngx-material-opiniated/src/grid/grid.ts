@@ -50,7 +50,7 @@ export class GridOpenColumnDirective {
 export class GridComponent implements AfterViewInit, AfterContentInit {
     private _pageLength: number;
     private _source;
-    private _columns: Column[];
+    private _columns: string | Column[];
     private _canFilter = false;
     data: DataSource;
 
@@ -186,7 +186,7 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
     }
 
     @Input()
-    set columns(v) {
+    set columns(v: string | Column[]) {
         if (this._columns === v)
             return;
         if (this.data)
