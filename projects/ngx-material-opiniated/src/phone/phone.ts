@@ -9,7 +9,10 @@ import {
     EventEmitter,
     ViewChild,
     ChangeDetectionStrategy,
-    ChangeDetectorRef
+    ChangeDetectorRef,
+    InjectionToken,
+    Inject,
+    Optional
 } from '@angular/core';
 import {
     ControlValueAccessor,
@@ -19,9 +22,9 @@ import {
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     FormGroupDirective,
-    NgForm
+    NgForm,
+    AsyncValidator
 } from '@angular/forms';
-import * as glibphone from 'google-libphonenumber';
 import { Country } from './country.model';
 import { CountryService } from './country.service';
 import { ErrorStateMatcher } from '@angular/material';
@@ -40,6 +43,9 @@ const VALIDATOR = {
     multi: true
 };
 
+export const PHONE_VALIDATOR = new InjectionToken('MAT-OPINIATED-PHONE-VALIDATOR');
+export type PhoneValidator = (txt: string) => Promise<boolean>;
+
 /* stolen from https://github.com/nikhiln/ngx-international-phone-number */
 @Component({
     selector: 'phone-number',
@@ -51,7 +57,7 @@ const VALIDATOR = {
     providers: [COUNTER_CONTROL_ACCESSOR, VALIDATOR]
 })
 export class PhoneNumberComponent
-    implements OnInit, ControlValueAccessor, Validator {
+    implements OnInit, ControlValueAccessor, AsyncValidator {
     // input
     @Input() placeholder = 'Enter phone number'; // default
     @Input() maxlength = 15; // default
@@ -63,6 +69,8 @@ export class PhoneNumberComponent
     @Input() errorMessage = 'Invalid phone number';
 
     @Input() allowedCountries: Country[];
+
+    @Input() validator: PhoneValidator;
 
     @Output() onCountryCodeChanged: EventEmitter<any> = new EventEmitter();
 
@@ -83,6 +91,7 @@ export class PhoneNumberComponent
     value = '';
 
     @ViewChild('phoneNumberInput') phoneNumberInput: ElementRef;
+    validatingValue: any;
 
     /**
      * Util function to check if given text starts with plus sign
@@ -105,6 +114,7 @@ export class PhoneNumberComponent
 
     constructor(
         private countryService: CountryService
+        , @Optional() @Inject(PHONE_VALIDATOR) private _validator
         , private cd: ChangeDetectorRef
         , phoneComponent: ElementRef
     ) {
@@ -242,7 +252,7 @@ export class PhoneNumberComponent
      * Validation
      * @param c
      */
-    validate(c: FormControl): ValidationErrors | null {
+    async validate(c: FormControl): Promise<ValidationErrors | null> {
         let value = c.value;
         // let selectedDialCode = this.getSelectedCountryDialCode();
         let validationError: ValidationErrors = {
@@ -259,13 +269,14 @@ export class PhoneNumberComponent
             return validationError;
         }
 
-        if (value) {
-            // validating number using the google's lib phone
-            const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
+        if (value && (this._validator || this.validator)) {
+
             try {
-                let phoneNumber = phoneUtil.parse(value);
-                this.isValidNumber = phoneUtil.isValidNumber(phoneNumber);
-                return this.isValidNumber ? null : validationError;
+                this.validatingValue = value;
+                const ret = await (this._validator || this.validator)(value);
+                if (this.validatingValue === value)
+                    this.isValidNumber = ret;
+                return ret ? null : validationError;
             } catch (ex) {
                 this.isValidNumber = false;
                 return validationError;

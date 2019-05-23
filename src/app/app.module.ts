@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ContextMenuModule } from 'ngx-contextmenu';
+import * as glibphone from 'google-libphonenumber';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,12 @@ import { ContextMenuModule } from 'ngx-contextmenu';
     OpiniatedDisplayModule,
     OpiniatedInputsModule,
     OpiniatedGridModule,
-    OpiniatedPhoneModule,
+    OpiniatedPhoneModule.withValidator(async (phone: string) => {
+      const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
+      const phoneNumber = phoneUtil.parse(phone);
+      const isValidNumber = phoneUtil.isValidNumber(phoneNumber);
+      return isValidNumber;
+  }),
     OpiniatedCommonModule.forRoot(),
     OpiniatedNotificationModule.forRoot(),
     HttpClientModule,

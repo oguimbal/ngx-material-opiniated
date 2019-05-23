@@ -1,6 +1,6 @@
 {
   "name": "ngx-material-opiniated",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Opiniated Angular Material components (Typeahead, Grid, Buttons, ...)",
   "keywords": [
     "ngx",
@@ -18,8 +18,7 @@
     "@angular/common": ">=7.x",
     "@angular/core": ">=7.x",
     "@angular/material": ">=7.x",
-    "moment": ">=2.x",
-    "google-libphonenumber": ">=3.2.2"
+    "moment": ">=2.x"
   },
   "dependencies": {
     "@oguimbal/utilities": ">=2.0.0",

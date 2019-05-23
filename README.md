@@ -253,12 +253,27 @@ A phone input.
 
 This input is an adaptation of [this one](https://github.com/nikhiln/ngx-international-phone-number) (which was broken for me)
 
-**WARNING:** This library imports `google-libphonenumber`, which is a bit heavy (several 100's kB)
+**WARNING:** This does not provide a validator by default. You will have to declare your own if you with to perform extensive validation (ex: to check if a phone number is valid). `google-libphonenumber` can help you with that, but it is a bit heavy so it is not included by default in this module (several 100's kB)
 
 ## Usage
 
 ```html
     <phone-number [defaultCountry]="'fr'" [(ngModel)]="phoneNumber"></phone-number>
+```
+
+if you with to use `google-libphonenumber` as a phone validator, import this module using:
+```typescript
+
+    OpiniatedPhoneModule.withValidator(async (phone: string) => {
+        // avoid putting this heavy lib in your main bundle, import it dynamically (if supported by your setup)
+        const glibphone = await import (/* webpackChunkName: "google-libphone" */ 'google-libphonenumber');
+        // ...or import with a classical import on your file header:  import * as glibphone from 'google-libphonenumber';
+        
+        const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
+        const phoneNumber = phoneUtil.parse(phone);
+        const isValidNumber = phoneUtil.isValidNumber(phoneNumber);
+        return isValidNumber;
+    })
 ```
 
 
