@@ -264,7 +264,7 @@ This input is an adaptation of [this one](https://github.com/nikhiln/ngx-interna
 if you with to use `google-libphonenumber` as a phone validator, import this module using:
 ```typescript
 
-    OpiniatedPhoneModule.withValidator(async (phone: string) => {
+    async function validatePhone(phone: string) {
         // avoid putting this heavy lib in your main bundle, import it dynamically (if supported by your setup)
         const glibphone = await import (/* webpackChunkName: "google-libphone" */ 'google-libphonenumber');
         // ...or import with a classical import on your file header:  import * as glibphone from 'google-libphonenumber';
@@ -273,6 +273,10 @@ if you with to use `google-libphonenumber` as a phone validator, import this mod
         const phoneNumber = phoneUtil.parse(phone);
         const isValidNumber = phoneUtil.isValidNumber(phoneNumber);
         return isValidNumber;
+    }
+
+    OpiniatedPhoneModule.forRoot({
+        validator: validatePhone
     })
 ```
 

@@ -34,13 +34,13 @@ const Components = [
 })
 export class OpiniatedPhoneModule {
 
-  public static withValidator(phoneValidator: PhoneValidator): ModuleWithProviders {
+  public static forRoot(options: {validator: PhoneValidator}): ModuleWithProviders {
     return {
         ngModule: OpiniatedPhoneModule,
         providers: [
             {
                 provide: PHONE_VALIDATOR,
-                useValue: phoneValidator,
+                useValue: options.validator,
             },
         ]
     };
