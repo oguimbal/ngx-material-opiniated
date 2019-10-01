@@ -1,4 +1,4 @@
-﻿import { Directive, ViewContainerRef, TemplateRef, ComponentFactoryResolver, ComponentRef, ChangeDetectorRef, Input } from '@angular/core';
+﻿import { Directive, ViewContainerRef, TemplateRef, ComponentFactoryResolver, ComponentRef, ChangeDetectorRef, Input, OnDestroy } from '@angular/core';
 import { LoaderErrorViewComponent } from './loader.errorview';
 import { LoaderLoadingViewComponent } from './loader.loadingview';
 
@@ -10,7 +10,7 @@ let opCnt = 0;
 @Directive({
   selector: '[loader]'
 })
-export class LoaderDirective {
+export class LoaderDirective implements OnDestroy {
   cref: ComponentRef<any>;
   private _inline: boolean;
   private _noPrefix: boolean;
@@ -34,7 +34,8 @@ export class LoaderDirective {
   get loaderNoPrefix() {
     return this._noPrefix;
   }
-  
+
+  private destroyed = false;
   private isWaiting = true;
   private retryFn;
   private currentVal = null;
@@ -48,6 +49,10 @@ export class LoaderDirective {
     private cd: ChangeDetectorRef,
     private compFactoryRes: ComponentFactoryResolver
   ) {}
+
+  ngOnDestroy() {
+    this.destroyed = true;
+  }
 
   @Input()
   set loader(newVal: any /* promise, value */) {
@@ -100,13 +105,16 @@ export class LoaderDirective {
   }
 
   private create() {
+    if (this.destroyed) {
+      return;
+    }
     this.initial = false;
     if (this.op) {
       this.op.then(() => this.create());
       return;
     }
     opCnt++;
-    if (!this.isWaiting) {
+    if (!this.isWaiting || this.destroyed) {
       return;
     }
     this.isWaiting = false;
@@ -116,6 +124,9 @@ export class LoaderDirective {
   }
 
   private error(err) {
+    if (this.destroyed) {
+      return;
+    }
     console.error(err);
     if (this.op) {
       this.op.then(() => this.error(err));
@@ -160,6 +171,9 @@ export class LoaderDirective {
     }, 500);
   }
   private doWaiting() {
+    if (this.destroyed) {
+      return;
+    }
     this.initial = false;
     this._viewContainer.clear();
 
