@@ -235,6 +235,19 @@ export class DataSource {
 
     constructor(private source: any) {
 
+        let infered = false;
+        const handleData = async (data: any) => {
+            if (typeof data.subscribe === 'function')
+                data = data.toPromise();
+            if (data && typeof data.then === 'function')
+                data = await data;
+            if (infered) {
+                return data;
+            }
+            this.inferColumns(data);
+            infered = true;
+            return data;
+        };
 
         // 1) finds how to get data
         let retreiveRaw: (() => Promise<any[]>) = null;
@@ -264,12 +277,8 @@ export class DataSource {
             retreiveRaw = async () => {
                 if (dataGot)
                     return dataGot;
-                let data = source();
-                if (typeof data.subscribe === 'function')
-                    data = data.toPromise();
-                if (data && typeof data.then === 'function')
-                    data = await data;
-                return dataGot = this.inferColumns(data);
+                const data = source();
+                return dataGot = await handleData(data);
             };
         }
 
@@ -323,8 +332,14 @@ export class DataSource {
                 });
         }
 
-        if (!retreivePaged)
+        // handle dynamic sources
+        if (!retreivePaged && source && typeof source === 'object' && typeof source.suggest === 'function') {
+            retreivePaged = () => handleData(source.suggest(this.searchText));
+        }
+
+        if (!retreivePaged) {
             throw new Error('Custom sources not yet implemented');
+        }
 
         this.refreshData = () => {
             const loader = async () => {
