@@ -51,7 +51,7 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
     emptyValue = new EventEmitter<T>();
 
     @ContentChild(TemplateRef, /* TODO: add static flag */ {}) itemTemplate: TemplateRef<any>;
-    @ViewChild('createRef', { static: false }) createRef;
+    @ViewChild('createRef') createRef;
     @ViewChild('input', { static: true }) input;
 
     private _initialValue: Observable<T>;

@@ -101,7 +101,7 @@ export class TextComponent implements ControlValueAccessor {
     private onChangeCallback: (_: any) => void = noop;
 
     private isPromiseValidator;
-    @ViewChild('nti', { static: false }) nativeElement;
+    @ViewChild('nti') nativeElement;
 
     selectString(txt: string) {
         setTimeout(() => {

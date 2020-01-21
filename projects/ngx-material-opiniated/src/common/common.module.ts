@@ -35,7 +35,7 @@ library.add(
     ]
 })
 export class OpiniatedCommonModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<OpiniatedCommonModule> {
         return {
             ngModule: OpiniatedCommonModule,
             providers: [
@@ -48,7 +48,7 @@ export class OpiniatedCommonModule {
             ]
         };
     }
-    static forChild() {
-        return {ngModule: OpiniatedCommonModule};
-    }
+    static forChild(): ModuleWithProviders<OpiniatedCommonModule> {
+    return { ngModule: OpiniatedCommonModule };
+}
 }

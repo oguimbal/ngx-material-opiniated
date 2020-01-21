@@ -40,7 +40,7 @@ const Components = [
 })
 export class OpiniatedPhoneModule {
 
-  public static forRoot(options: {validator: PhoneValidator}): ModuleWithProviders {
+  public static forRoot(options: {validator: PhoneValidator}): ModuleWithProviders<OpiniatedPhoneModule> {
     return {
         ngModule: OpiniatedPhoneModule,
         providers: [

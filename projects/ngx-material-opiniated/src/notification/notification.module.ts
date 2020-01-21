@@ -31,7 +31,7 @@ import { OpiniatedInputsModule } from '../inputs/index';
     ]
 })
 export class OpiniatedNotificationModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<OpiniatedNotificationModule> {
         return {
             ngModule: OpiniatedNotificationModule,
             providers: [
