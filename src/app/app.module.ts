@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ContextMenuModule } from 'ngx-contextmenu';
-import * as glibphone from 'google-libphonenumber';
+import { validatePhone } from './validate-phone';
 
 
 @NgModule({
@@ -24,12 +24,8 @@ import * as glibphone from 'google-libphonenumber';
     OpiniatedInputsModule,
     OpiniatedGridModule,
     OpiniatedPhoneModule.forRoot({
-      validator: async (phone: string) => {
-        const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
-        const phoneNumber = phoneUtil.parse(phone);
-        const isValidNumber = phoneUtil.isValidNumber(phoneNumber);
-        return isValidNumber;
-    }}),
+      validator: validatePhone
+    }),
     OpiniatedCommonModule.forRoot(),
     OpiniatedNotificationModule.forRoot(),
     HttpClientModule,
