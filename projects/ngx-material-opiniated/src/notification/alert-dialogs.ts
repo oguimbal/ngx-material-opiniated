@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, HostBinding, HostListener } from '@angular/core';
 import { IAlertDialogData } from './notification-service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'alert-dialogs',

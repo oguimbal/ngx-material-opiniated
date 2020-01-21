@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoaderDirective } from './loader';
 import { LoaderLoadingViewComponent } from './loader.loadingview';
 import { LoaderErrorViewComponent } from './loader.errorview';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OpiniatedCommonModule } from '../common/index';
 

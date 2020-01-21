@@ -1,6 +1,6 @@
 import { EventEmitter, NgZone, Injectable } from '@angular/core';
 import { INotificationService } from '../services';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 export interface IAlertDialogData {
   text: string;

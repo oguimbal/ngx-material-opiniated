@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { OpiniatedTypeaheadModule, OpiniatedPhoneModule, OpiniatedNotificationModule, OpiniatedDisplayModule, OpiniatedInputsModule , OpiniatedGridModule, INotificationService, OpiniatedCommonModule } from 'projects/ngx-material-opiniated/src/public_api';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { validatePhone } from './validate-phone';

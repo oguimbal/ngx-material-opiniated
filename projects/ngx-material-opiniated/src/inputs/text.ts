@@ -1,7 +1,7 @@
 ﻿import {Component, EventEmitter, forwardRef, ViewChild, ElementRef, Output, HostListener, HostBinding, Input, Renderer2, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import {delay} from '@oguimbal/utilities';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 const noop = () => {
 };
