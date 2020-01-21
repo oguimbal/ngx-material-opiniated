@@ -12,6 +12,7 @@ import { delay } from '@oguimbal/utilities';
 })
 export class AppComponent {
   themeClass: string;
+  thValue: any;
 
   phoneNumber: string;
 

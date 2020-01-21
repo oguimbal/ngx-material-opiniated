@@ -1,6 +1,6 @@
 
 
-import { Observable, isObservable, from } from 'rxjs';
+import { Observable, isObservable, from, ObservableInput } from 'rxjs';
 
 /** Infers an observable from a given value (constant value, promise, observable, ...) */
 export function toObservable<T>(value: any): Observable<T> {
@@ -9,7 +9,7 @@ export function toObservable<T>(value: any): Observable<T> {
     if (isObservable<T>(value))
         return value;
     if (value && typeof value.then === 'function')
-        return from(value);
+        return from(value) as any;
     return from([value]);
 }
 
@@ -38,4 +38,3 @@ export function graphMatches(item: any, val: string) {
     };
     return m(item, 0);
 }
-

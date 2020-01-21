@@ -7,7 +7,6 @@ import { OpiniatedTypeaheadModule, OpiniatedPhoneModule, OpiniatedNotificationMo
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
-import { ContextMenuModule } from 'ngx-contextmenu';
 import { validatePhone } from './validate-phone';
 
 

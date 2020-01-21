@@ -1,10 +1,13 @@
 import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
-import { ContextMenuModule, ContextMenuService, IContextMenuOptions } from 'ngx-contextmenu';
+import { ContextMenuModule, ContextMenuService, IContextMenuOptions } from '@oguimbal/ngx-contextmenu';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faPencilAlt, faTrash, faPlus, faCalendar, faUndo, faSave } from '@fortawesome/free-solid-svg-icons';
 import { TemplateInjectorComponent } from './template-injector';
 import { FocusDirective } from './focus';
 import { OnlyNumberDirective } from './only-number';
+
+export { FocusDirective } from './focus';
+export { OnlyNumberDirective } from './only-number';
 
 library.add(
     faCheck,

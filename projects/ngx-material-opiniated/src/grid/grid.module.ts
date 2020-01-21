@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OpiniatedInputsModule } from '../inputs/inputs.module';
 import { OpiniatedDisplayModule } from '../display/display.module';
-import {ContextMenuModule} from 'ngx-contextmenu';
+import {ContextMenuModule} from '@oguimbal/ngx-contextmenu';
 import { OpiniatedLoaderModule } from '../loader/index';
 import { OpiniatedCommonModule } from '../common/index';
 

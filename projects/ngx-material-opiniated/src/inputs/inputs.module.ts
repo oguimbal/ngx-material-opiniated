@@ -13,7 +13,7 @@ import { TextComponent } from './text';
 import { DateTimeComponent } from './datetime';
 import { CheckComponent } from './check';
 import { BtnComponent } from './btn';
-import { OwlNativeDateTimeModule, OwlDateTimeModule } from 'ng-pick-datetime';
+import { OwlNativeDateTimeModule, OwlDateTimeModule } from 'ng-pick-datetime-ex';
 import { OpiniatedCommonModule } from '../common/index';
 
 const Components = [

@@ -1,7 +1,7 @@
 <div class="gridHeader">
     <h3 class="gridTitle" *ngIf="gridTitle">{{gridTitle}}</h3>
     <div class="grid-search" *ngIf="canSearch">
-        <txt [(value)]="searchText" icon="fa fa-search" i18n="@@Grid.Search" [placeholder]="searchPlaceholder || 'Search'"></txt>
+        <txt [(value)]="searchText" icon="fa fa-search" [placeholder]="searchPlaceholder || 'Search'"></txt>
     </div>
     <div class="clearfix"></div>
 </div>
@@ -23,9 +23,9 @@
         </ng-container>
         <context-menu #emptyContextMenu></context-menu>
     </table>
-    <div class="text-center lead" *ngIf="lines && !lines.length" i18n="@@Grid.NoData">No data to display</div>
+    <div class="text-center lead" *ngIf="lines && !lines.length">No data to display</div>
     <div class="paginator-container" *ngIf="totalCount > pageLength">
-        
+
         <mat-paginator [length]="totalCount" [pageSize]="pageLength" [pageIndex]="currentPage" (page)="gotoPage($event.pageIndex)">
         </mat-paginator>
         <!-- <ul class="pagination pagination-sm">

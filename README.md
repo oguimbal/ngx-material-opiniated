@@ -1,6 +1,7 @@
 # Demo [See it in action here](https://oguimbal.github.io/ngx-material-opiniated/index.html)
 
 
+**This package is built for Angular 9... for Angular 7 users, please install version <=0.0.33**
 
 # Inputs & common components (OpiniatedInputsModule)
 
@@ -154,16 +155,16 @@ class MyComponent {
         // show a message dialog (with an OK button, and wait for its dismissal)
         await this.notif.alert('Message text', 'Optional title');
 
-        
+
         // Asks the user a question (with a ok/cancel answer), and returns true if clicked OK
         if (!(await this.notif.alert('Question ?', 'Optional title')))
             return;
-        
+
         // Asks the user a question (with a save/discard answer), and returns true if clicked Save
         if (!(await this.notif.saveOrDiscard('Save ?', 'Optional title')))
             return;
-        
-        
+
+
         // Prompts the user a value (returns undefined if user cancelled)
         // NB: the last argument,is the text that will be originally selected (useful for file names, selected without extension by default)
         const value = await this.notif.prompt('Input a file name', 'Optional title', 'initial file name.jpg', 'initial file name')))
@@ -268,7 +269,7 @@ if you with to use `google-libphonenumber` as a phone validator, import this mod
         // avoid putting this heavy lib in your main bundle, import it dynamically (if supported by your setup)
         const glibphone = await import (/* webpackChunkName: "google-libphone" */ 'google-libphonenumber');
         // ...or import with a classical import on your file header:  import * as glibphone from 'google-libphonenumber';
-        
+
         const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
         const phoneNumber = phoneUtil.parse(phone);
         const isValidNumber = phoneUtil.isValidNumber(phoneNumber);
@@ -292,7 +293,7 @@ Provides a simple way to load things
 
 ```html
 <div *loader="myLoader">
-    <!-- 
+    <!--
         Below expression would have thrown without the loader, but it works.
         The content of this block is replaced by a spinning wheel while loading,
         and its content is only instanciated when loaded.
@@ -325,7 +326,7 @@ Show what is currently loading (will show "Loading some content" while loading)
 <div *loader="myLoader; what: 'some context'">
 ```
 
-    
+
 Show what is currently loading, without prefix (will only show "some content" while loading)
 ```html
 <div *loader="myLoader; what: 'some context'; noPrefix: true">
