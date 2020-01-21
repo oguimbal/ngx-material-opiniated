@@ -1,0 +1,115 @@
+<div class="container" [class]="themeClass">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card>
+                <mat-card-title class="center">ngx-material-opiniated demo</mat-card-title>
+                <mat-card-content class="center">
+                    <div>An helper library that simplifies much of your repetitive tasks using angular material</div>
+                    <div><a href="https://github.com/oguimbal/ngx-material-opiniated/blob/master/src/app/app.component.html">Source of this page is here</a></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Simple inputs</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedInputsModule</i>
+                    <txt #txt [validator]="validate" placeholder="Type some text to test async validation" info="Some tip to fill that" [action]="btnAction" [actionName]="'Create ' + txt.value">
+                        <div>This is a custom prefix&nbsp;&nbsp;</div>
+                    </txt>
+                    <txt [disabled]="true" placeholder="Disabled" [ngModel]="'Some disabled value'"></txt>
+                    <txt #txt2 [multiline]="true" [validator]="validate" placeholder="Will auto-resize on enter" info="Some tip to fill that" [action]="btnAction" [actionName]="'Create ' + txt2.value">
+                        <div>This is a text area &nbsp;&nbsp;</div>
+                    </txt>
+                </mat-card-content>
+                <check>Some checkbox</check>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Typeahead</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedTypeaheadComponent</i>
+                    <typeahead [source]="typeaheadSuggest" placeholder="Search a country" [initialValue]="typaheadInitial" [create]="typeaheadCreate" (valueChange)="thValue=$event" displayWith="name">
+                        <ng-template let-i="result"><img class="flag" [src]="i.flag" /><b>{{i.name}}</b><span>  (they speak {{i.languages[0].name}})</span></ng-template>
+                    </typeahead>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Datetime</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedInputsModule</i>
+                    <datetime placeholder="Your date"></datetime>
+                    <datetime placeholder="Your date dialog" dialog="true"></datetime>
+                    <datetime placeholder="Your date + time" pickerType="both"></datetime>
+                    <datetime placeholder="Your time" pickerType="timer"></datetime>
+                    <datetime placeholder="Your disabled date" [disabled]="true"></datetime>
+                    <div>
+                        <div>Inline:</div>
+                        <datetime inline="true" placeholder="Your date"></datetime>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Phone number</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedPhoneModule</i>
+                    <phone-number [defaultCountry]="'fr'" [(ngModel)]="phoneNumber"></phone-number>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Grid</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedGridModule</i>
+                    <grid [source]="gridSource" columns="item, price, buy, commestible">
+                        <ng-template gridColumn="item" let-i="let-i"><b>{{i.item}}</b><span *ngIf="i.commestible"> (eat me !)</span></ng-template>
+                        <ng-template gridOpenColumn="price" let-i="let-i">
+                            <div>You can buy {{i.item}} for almost nothing !</div>
+                        </ng-template>
+                    </grid>
+                    <div class="text-center"><i>Tip: Click on an article price !</i></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Editable grid</mat-card-title>
+                <mat-card-content>
+                    <grid [source]="editGridSource" [canSearch]="false" [onSave]="saveGridRow" canAdd="Add some weird personage" [onDelete]="deleteGridRow"></grid>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Button</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedInputsModule</i>
+                    <div>Loader on network action:</div>
+                    <btn [action]="longAction" icon="check">Click for action</btn>
+                    <div>Automatic message on error:</div>
+                    <btn [action]="errorAction">Click for error</btn>
+                    <div>No content</div>
+                    <btn [action]="longAction" icon="check"></btn>
+                    <div>Colors</div>
+                    <btn color="primary" icon="check" [action]="longAction">primary</btn>
+                    <btn color="accent" icon="check" [action]="longAction">accent</btn>
+                    <btn color="warn" icon="check" [action]="longAction">warn</btn>
+                    <div>Types (primary color)</div>
+                    <btn icon="check" type="flat" color="primary" [action]="longAction">Flat</btn>
+                    <btn icon="check" type="basic" color="primary" [action]="longAction">Basic</btn>
+                    <btn icon="check" type="stroked" color="primary" [action]="longAction">Stroked</btn><br/>
+                    <btn icon="check" type="fab" color="primary" [action]="longAction"></btn>(fab)
+                    <btn icon="check" type="minifab" color="primary" [action]="longAction"></btn>(mini fab)
+                    <btn icon="check" type="icon" color="primary" [action]="longAction"></btn>(icon)</mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
