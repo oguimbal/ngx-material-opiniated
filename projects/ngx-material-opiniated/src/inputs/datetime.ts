@@ -46,7 +46,7 @@ export class DateTimeComponent implements OnInit, OnChanges {
     private _value;
 
 
-    @ViewChild('dtinput') picker: ElementRef;
+    @ViewChild('dtinput', { static: false }) picker: ElementRef;
 
     constructor() { }
 

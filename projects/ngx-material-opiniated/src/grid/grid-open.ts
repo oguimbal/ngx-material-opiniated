@@ -17,7 +17,7 @@ export class GridOpenRowComponent implements OnInit, OnChanges, OnDestroy {
     @Input()
     colspan;
 
-    @ViewChild('target', {read: ViewContainerRef}) target: ViewContainerRef;
+    @ViewChild('target', { read: ViewContainerRef, static: true }) target: ViewContainerRef;
 
     ngOnInit() {
     }

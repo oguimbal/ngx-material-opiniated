@@ -67,13 +67,23 @@
         <div class="col-md-6">
             <mat-card>
                 <mat-card-title>Grid</mat-card-title>
-                <mat-card-content><i class="center">You must import module OpiniatedGridModule</i>
+                <mat-card-content><i class="center">You must import module OpiniatedGridModule</i><!-- //- Specifying 'columns' is optional (shows all, except those begining with $ or __)
+                    //- Supported types that will be infered from data type:
+                    //-    * text
+                    //-    * number
+                    //-    * boolean: shows a checkbox
+                    //-    * money (if type {amt: string; cur: string})
+                    //-    * action (if function): shows a button -->
                     <grid [source]="gridSource" columns="item, price, buy, commestible">
+                        <!-- Custom template for a column -->
                         <ng-template gridColumn="item" let-i="let-i"><b>{{i.item}}</b><span *ngIf="i.commestible"> (eat me !)</span></ng-template>
+
+                        <!--  Open row when clicking on a column -->
                         <ng-template gridOpenColumn="price" let-i="let-i">
                             <div>You can buy {{i.item}} for almost nothing !</div>
                         </ng-template>
                     </grid>
+
                     <div class="text-center"><i>Tip: Click on an article price !</i></div>
                 </mat-card-content>
             </mat-card>
@@ -82,6 +92,7 @@
             <mat-card>
                 <mat-card-title>Editable grid</mat-card-title>
                 <mat-card-content>
+                    <!-- if 'onSave' property is specified, then the grid will be editable -->
                     <grid [source]="editGridSource" [canSearch]="false" [onSave]="saveGridRow" canAdd="Add some weird personage" [onDelete]="deleteGridRow"></grid>
                 </mat-card-content>
             </mat-card>

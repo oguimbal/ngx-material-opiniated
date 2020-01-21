@@ -90,7 +90,7 @@ export class PhoneNumberComponent
 
     value = '';
 
-    @ViewChild('phoneNumberInput') phoneNumberInput: ElementRef;
+    @ViewChild('phoneNumberInput', { static: true }) phoneNumberInput: ElementRef;
     validatingValue: any;
 
     /**
