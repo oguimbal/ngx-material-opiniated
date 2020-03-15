@@ -93,7 +93,11 @@
                 <mat-card-title>Editable grid</mat-card-title>
                 <mat-card-content>
                     <!-- if 'onSave' property is specified, then the grid will be editable -->
-                    <grid [source]="editGridSource" [canSearch]="false" [onSave]="saveGridRow" canAdd="Add some weird personage" [onDelete]="deleteGridRow"></grid>
+                    <grid [source]="editGridSource" [canSearch]="false" [onSave]="saveGridRow" canAdd="Add some weird personage" [onDelete]="deleteGridRow">
+                        <ng-template gridOpenColumn="firstName" let-i="let-i">
+                            <div>DETAILS</div>
+                        </ng-template>
+                    </grid>
                 </mat-card-content>
             </mat-card>
         </div>
