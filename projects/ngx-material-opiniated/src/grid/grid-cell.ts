@@ -74,7 +74,7 @@ export class GridCellComponent implements OnDestroy, OnChanges {
         if (template) {
             // use a child template
             if (!this.vref)
-                this.vref = this._viewContainer.createEmbeddedView(template, {});
+                this.vref = this._viewContainer.createEmbeddedView(template, {$implicit: this.item, readonly: !this.isEditting});
             this.vref.context.$implicit = this.item;
             this.vref.context.readonly = !this.isEditting;
             this.vref.detectChanges();

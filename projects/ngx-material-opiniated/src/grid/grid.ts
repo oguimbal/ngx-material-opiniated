@@ -1,4 +1,4 @@
-import {Component, EventEmitter, TemplateRef, ChangeDetectorRef, AfterViewInit, ContentChildren, QueryList, Directive, AfterContentInit, Input, Output } from '@angular/core';
+import {Component, EventEmitter, TemplateRef, ChangeDetectorRef, AfterViewInit, ContentChildren, QueryList, Directive, AfterContentInit, Input, Output, ContentChild, ViewContainerRef } from '@angular/core';
 import {DataSource, Column} from './grid-datasource';
 
 const gridColumnKey = '_gridColumn';
@@ -9,11 +9,11 @@ export class GridColumnDirective {
 
     @Input()
     set gridColumn(name: string) {
-        this._templateRef[gridColumnKey] = name;
+        this._templateRef['_declarationTContainer'][gridColumnKey] = name;
     }
 
-    constructor(private _templateRef: TemplateRef<any>
-    ) {
+    constructor(private _templateRef: TemplateRef<any>) {
+        window['tplGridColumn'] = _templateRef;
     }
 }
 
@@ -26,7 +26,7 @@ export class GridOpenColumnDirective {
 
     @Input()
     set gridOpenColumn(name: string) {
-        const val = this._templateRef[gridOpenColumnKey] = this._templateRef[gridOpenColumnKey] || {};
+        const val = this._templateRef['_declarationTContainer'][gridOpenColumnKey] = this._templateRef['_declarationTContainer'][gridOpenColumnKey] || {};
         val.name = name;
     }
 
@@ -38,6 +38,7 @@ export class GridOpenColumnDirective {
 
     constructor(private _templateRef: TemplateRef<any>
     ) {
+        window['tplGridOpenColumn'] = _templateRef;
     }
 }
 
@@ -105,11 +106,17 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
 
 
     ngAfterContentInit() {
+        this.allTemplates.changes.subscribe(() => this.updateTemplates());
+        this.updateTemplates();
+    }
+
+    private updateTemplates() {
         this.allTemplates.forEach(t => {
-            const col = t[gridColumnKey];
+            const tdata = t['_declarationTContainer'];
+            const col = tdata[gridColumnKey];
             if (col)
                 this.templateByColumn[col] = t;
-            const openCol = t[gridOpenColumnKey];
+            const openCol = tdata[gridOpenColumnKey];
             if (openCol) {
                 this.openTemplateByColumn[openCol.name] = {template: t, canOpen: openCol.canOpen};
             }

@@ -76,10 +76,10 @@
                     //-    * action (if function): shows a button -->
                     <grid [source]="gridSource" columns="item, price, buy, commestible">
                         <!-- Custom template for a column -->
-                        <ng-template gridColumn="item" let-i="let-i"><b>{{i.item}}</b><span *ngIf="i.commestible"> (eat me !)</span></ng-template>
+                        <ng-template gridColumn="item" let-i><b>{{i.item}}</b><span *ngIf="i.commestible"> (eat me !)</span></ng-template>
 
                         <!--  Open row when clicking on a column -->
-                        <ng-template gridOpenColumn="price" let-i="let-i">
+                        <ng-template gridOpenColumn="price" let-i>
                             <div>You can buy {{i.item}} for almost nothing !</div>
                         </ng-template>
                     </grid>
@@ -94,7 +94,7 @@
                 <mat-card-content>
                     <!-- if 'onSave' property is specified, then the grid will be editable -->
                     <grid [source]="editGridSource" [canSearch]="false" [onSave]="saveGridRow" canAdd="Add some weird personage" [onDelete]="deleteGridRow">
-                        <ng-template gridOpenColumn="firstName" let-i="let-i">
+                        <ng-template gridOpenColumn="firstName" let-i>
                             <div>DETAILS</div>
                         </ng-template>
                     </grid>
