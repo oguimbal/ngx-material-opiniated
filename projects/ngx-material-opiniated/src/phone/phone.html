@@ -22,6 +22,6 @@
         <span  class="text-danger">{{errorMessage}}</span>
     </mat-hint>
 
-    <input matInput onlyNumber="true" [attr.maxlength]="maxlength" [(ngModel)]="phoneNumber" (ngModelChange)="updatePhoneNumber($event)" 
-    [placeholder]="placeholder" [type]="type" #phoneNumberInput>
+    <input matInput onlyNumber="true" [attr.maxlength]="maxlength" [(ngModel)]="phoneNumber" (ngModelChange)="updatePhoneNumber($event)"
+    [placeholder]="placeholder" [type]="type" #phoneNumberInput [required]="required">
 </mat-form-field>
