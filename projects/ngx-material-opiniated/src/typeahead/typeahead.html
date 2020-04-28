@@ -6,6 +6,7 @@
         [formControl]="searchControl"
         (blur)="onBlur()"
         (keyup)="onEmptyInput($event)"
+        [required]="required"
     >
     <button *ngIf="create && status === 'ready'" mat-button matSuffix mat-icon-button matTooltip="Create" (click)="onCreate()">
         <fa-icon [icon]="faPlus"></fa-icon>

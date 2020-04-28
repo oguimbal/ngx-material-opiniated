@@ -36,6 +36,8 @@ export class OpiniatedTypeaheadComponent<T> implements OnChanges {
     placeholder: string;
     @Input()
     searchWhenEmpty = false;
+    @Input()
+    required: boolean;
 
     text: string;
     @Input()
