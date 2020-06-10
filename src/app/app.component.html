@@ -101,6 +101,16 @@
                 </mat-card-content>
             </mat-card>
         </div>
+        <div class="col-md-6">
+            <mat-card>
+                <mat-card-title>Editable with custom model</mat-card-title>
+                <mat-card-content>
+                    <!-- if 'onSave' property is specified, then the grid will be editable -->
+                    <grid [source]="customModelSource" [canSearch]="false" canAdd="Add custom model" [create]="addModel" [onSave]="saveGridRow" [onDelete]="deleteGridRow">
+                    </grid>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">

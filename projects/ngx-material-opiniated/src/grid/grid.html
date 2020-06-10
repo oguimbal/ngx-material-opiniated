@@ -1,12 +1,12 @@
 <div class="gridHeader">
     <h3 class="gridTitle" *ngIf="gridTitle">{{gridTitle}}</h3>
-    <div class="grid-search" *ngIf="canSearch">
+    <div class="grid-search" *ngIf="canSearch && totalCount">
         <txt [(value)]="searchText" icon="fa fa-search" [placeholder]="searchPlaceholder || 'Search'"></txt>
     </div>
     <div class="clearfix"></div>
 </div>
 <div *loader="data?.currentLoad; what: 'data';">
-    <table class="mat-elevation-z2 mat-table table table-hover" *ngIf="data">
+    <table class="mat-elevation-z2 mat-table table table-hover" *ngIf="data && lines?.length">
         <tr class="mat-header-row">
             <th class="mat-header-cell" *ngIf="onSave" style="width:45px;white-space: nowrap;"></th>
             <th class="mat-header-cell" *ngFor="let col of data.columns" [class]="classFor(col)" (click)="sortBy(col)">{{col.name}}<i [class]="sortClassFor(col)"></i></th>
