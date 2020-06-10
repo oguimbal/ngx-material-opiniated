@@ -1,6 +1,6 @@
 <div class="gridHeader">
     <h3 class="gridTitle" *ngIf="gridTitle">{{gridTitle}}</h3>
-    <div class="grid-search" *ngIf="canSearch && totalCount">
+    <div class="grid-search" *ngIf="canSearch">
         <txt [(value)]="searchText" icon="fa fa-search" [placeholder]="searchPlaceholder || 'Search'"></txt>
     </div>
     <div class="clearfix"></div>
