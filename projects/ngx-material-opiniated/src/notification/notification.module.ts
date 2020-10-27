@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OpiniatedInputsModule } from '../inputs/index';
+import '@angular/localize/init';
 
 @NgModule({
     declarations: [

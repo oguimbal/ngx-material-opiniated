@@ -75,3 +75,5 @@
 import 'zone.js/dist/zone';
 
 if (typeof window !== 'undefined') (window as any).global = window;
+
+import '@angular/localize/init';

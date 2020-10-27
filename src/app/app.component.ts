@@ -47,7 +47,7 @@ export class AppComponent {
         this.notif.success('Created ' + txt);
     }
 
-    constructor(private http: HttpClient, private notif: INotificationService, private overlayContainer: OverlayContainer) {
+    constructor(private http: HttpClient, readonly notif: INotificationService, private overlayContainer: OverlayContainer) {
         this.setTheme('light-theme');
     }
     setTheme(effectiveTheme: string): any {
@@ -121,4 +121,8 @@ export class AppComponent {
 
     addModel = () => new GridModel();
 
+
+    async testNotif(sthing: Promise<any>) {
+        this.notif.success('Result: ' + await sthing);
+    }
 }

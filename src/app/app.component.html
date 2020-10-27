@@ -137,4 +137,16 @@
             </mat-card>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card>
+                <mat-card-title>Notifs</mat-card-title>
+                <mat-card-content><i class="center">You must import module OpiniatedNotificationModule</i>
+                    <btn (click)="testNotif(notif.confirm('Some text', 'Confirm something'))" icon="check">Confirm</btn>
+                    <btn (click)="testNotif(notif.yesNo('Some text', 'Confirm something'))" icon="check">Yes-No</btn>
+                    <btn (click)="testNotif(notif.saveOrDiscard('Some text', 'Save something'))" icon="check">Save-discard</btn>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>

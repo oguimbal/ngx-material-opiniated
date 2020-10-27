@@ -1,26 +1,28 @@
 <h1 *ngIf="data.title">{{data.title}}</h1>
 <pre>{{data.text}}</pre>
-<div class="btns" *ngIf="data.type=='ConfirmText'">
+<div class="btns" *ngIf="data.type=='ConfirmText'" i18n="@@typeToContinue">
     Type "<b>{{data.confirmText}}</b>" to continue
 </div>
 <div class="btns" *ngIf="data.type=='Prompt' || data.type=='ConfirmText'">
     <txt matInput="matInput" [(ngModel)]="data.input" (enter)="done(true)" (escape)="done(false)"></txt>
     <div class="btns">
-        <button mat-raised-button (click)="done(false)">
+        <button mat-raised-button (click)="done(false)" i18n="@@cancel">
             Cancel
         </button>
-        <button mat-raised-button color="primary" (click)="done(true)" [disabled]="!canOk">Okay</button>
+        <button mat-raised-button color="primary" (click)="done(true)" [disabled]="!canOk" i18n="@@okay">
+            Okay
+        </button>
     </div>
 </div>
 <div class="btns" *ngIf="data.type=='SaveOrDiscard'">
     <div class="btns">
-        <button mat-raised-button color="warn" (click)="done(false)" id="Alert.Discard">
+        <button mat-raised-button color="warn" (click)="done(false)" id="Alert.Discard" i18n="@@discard">
             Discard
         </button>
-        <button mat-raised-button (click)="done(null)">
+        <button mat-raised-button (click)="done(null)" i18n="@@cancel">
             Cancel
         </button>
-        <button mat-raised-button color="primary" (click)="done(true)">
+        <button mat-raised-button color="primary" (click)="done(true)" i18n="@@save">
             Save
         </button>
     </div>
@@ -30,9 +32,9 @@
 </div>
 <div class="btns" *ngIf="data.type=='Confirm'">
     <button mat-raised-button (click)="done(false)">
-        Cancel
+        {{noText}}
     </button>
     <button mat-raised-button color="primary" (click)="done(true)">
-        Okay
+        {{yesText}}
     </button>
 </div>
