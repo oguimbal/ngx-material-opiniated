@@ -96,21 +96,7 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
     }
 
 
-    ngAfterContentInit() {
-        this.updateTemplates();
-    }
-
-    private updateTemplates() {
-        this.templateRefs.forEach(t => {
-            const col = t.gridColumn;
-            if (col)
-                this.templateByColumn[col] = t.tplRef;
-            const openCol = t.gridOpenColumn;
-            if (openCol) {
-                this.openTemplateByColumn[openCol.name] = {template: t.tplRef, canOpen: openCol.canOpen};
-            }
-        })
-    }
+    ngAfterContentInit() {}
 
     classFor(col: Column) {
 
@@ -138,40 +124,43 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
     }
 
     setGridColumn(name: string, tplRef: TemplateRef<any>) {
-        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        let ref = this.templateRefs.find(x => x.tplRef === tplRef);
         if (ref) {
             ref.gridColumn = name;
         }
         else {
-            this.templateRefs.push({tplRef, gridColumn: name});
+            ref = { tplRef, gridColumn: name };
+            this.templateRefs.push(ref);
         }
-        this.updateTemplates();
+        this.templateByColumn[ref.gridColumn] = ref.tplRef;
     }
     setOpenGridColumn(name: string, tplRef: TemplateRef<any>) {
-        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        let ref = this.templateRefs.find(x => x.tplRef === tplRef);
         if (ref) {
             ref.gridOpenColumn = {...ref.gridOpenColumn, name};
         }
         else {
-            this.templateRefs.push({
+            ref = {
                 tplRef,
-                gridOpenColumn: {name, canOpen: null}
-            });
+                gridOpenColumn: { name, canOpen: null }
+            };
+            this.templateRefs.push(ref);
         }
-        this.updateTemplates();
+        this.openTemplateByColumn[ref.gridOpenColumn.name] = {canOpen: ref.gridOpenColumn.canOpen, template: ref.tplRef};
     }
     setCanOpen(canOpen: 'editonly' | 'readonly' | null, tplRef: TemplateRef<any>) {
-        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        let ref = this.templateRefs.find(x => x.tplRef === tplRef);
         if (ref) {
             ref.gridOpenColumn = {...ref.gridOpenColumn, canOpen};
         }
         else {
-            this.templateRefs.push({
+            ref = {
                 tplRef,
                 gridOpenColumn: {name: undefined, canOpen}
-            });
+            }
+            this.templateRefs.push(ref);
         }
-        this.updateTemplates();
+        this.openTemplateByColumn[ref.gridOpenColumn.name] = {canOpen: ref.gridOpenColumn.canOpen, template: ref.tplRef};
     }
 
     @Input()
