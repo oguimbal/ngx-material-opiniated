@@ -15,9 +15,9 @@
   "author": "Olivier Guimbal",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": ">=9.x",
-    "@angular/core": ">=9.x",
-    "@angular/material": ">=9.x",
+    "@angular/common": ">=11.x",
+    "@angular/core": ">=11.x",
+    "@angular/material": ">=11.x",
     "moment": ">=2.x"
   },
   "dependencies": {

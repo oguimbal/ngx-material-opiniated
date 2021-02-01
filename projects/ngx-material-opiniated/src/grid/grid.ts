@@ -1,7 +1,6 @@
 import {Component, EventEmitter, TemplateRef, ChangeDetectorRef, AfterViewInit, ContentChildren, QueryList, Directive, AfterContentInit, Input, Output, ContentChild, ViewContainerRef } from '@angular/core';
 import {DataSource, Column} from './grid-datasource';
 
-const gridColumnKey = '_gridColumn';
 @Directive({
     selector: '[gridColumn]',
 })
@@ -9,16 +8,13 @@ export class GridColumnDirective {
 
     @Input()
     set gridColumn(name: string) {
-        this._templateRef['_declarationTContainer'][gridColumnKey] = name;
+        this.parent.setGridColumn(name, this._templateRef);
     }
 
-    constructor(private _templateRef: TemplateRef<any>) {
-        window['tplGridColumn'] = _templateRef;
-    }
+    constructor(private _templateRef: TemplateRef<any>, private parent: GridComponent) {}
 }
 
 
-const gridOpenColumnKey = '_gridOpenColumn';
 @Directive({
     selector: '[gridOpenColumn]',
 })
@@ -26,20 +22,15 @@ export class GridOpenColumnDirective {
 
     @Input()
     set gridOpenColumn(name: string) {
-        const val = this._templateRef['_declarationTContainer'][gridOpenColumnKey] = this._templateRef['_declarationTContainer'][gridOpenColumnKey] || {};
-        val.name = name;
+        this.parent.setOpenGridColumn(name, this._templateRef);
     }
 
     @Input()
     set canOpen(openOn: 'editonly' | 'readonly' | null) {
-        const val = this._templateRef[gridOpenColumnKey] = this._templateRef[gridOpenColumnKey] || {};
-        val.canOpen = openOn;
+        this.parent.setCanOpen(openOn, this._templateRef);
     }
 
-    constructor(private _templateRef: TemplateRef<any>
-    ) {
-        window['tplGridOpenColumn'] = _templateRef;
-    }
+    constructor(private _templateRef: TemplateRef<any>, private parent: GridComponent) {}
 }
 
 // ======================================================================================== GRID
@@ -91,10 +82,10 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
     @Input()
     gridTitle = '';
 
-    @ContentChildren(TemplateRef) allTemplates: QueryList<TemplateRef<any>>;
-
+    templateRefs: {tplRef: TemplateRef<any>; gridColumn?: string; gridOpenColumn?: {name: string, canOpen: 'editonly' | 'readonly' | null}}[] = [];
     templateByColumn: {[column: string]: TemplateRef<any>} = {};
     openTemplateByColumn: {[column: string]: {template: TemplateRef<any>; canOpen: 'editonly' | 'readonly' | null}} = {};
+
     ngAfterViewInit(): void {
         // this.refresh();
         this.cd.detectChanges();
@@ -106,21 +97,19 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
 
 
     ngAfterContentInit() {
-        this.allTemplates.changes.subscribe(() => this.updateTemplates());
         this.updateTemplates();
     }
 
     private updateTemplates() {
-        this.allTemplates.forEach(t => {
-            const tdata = t['_declarationTContainer'];
-            const col = tdata[gridColumnKey];
+        this.templateRefs.forEach(t => {
+            const col = t.gridColumn;
             if (col)
-                this.templateByColumn[col] = t;
-            const openCol = tdata[gridOpenColumnKey];
+                this.templateByColumn[col] = t.tplRef;
+            const openCol = t.gridOpenColumn;
             if (openCol) {
-                this.openTemplateByColumn[openCol.name] = {template: t, canOpen: openCol.canOpen};
+                this.openTemplateByColumn[openCol.name] = {template: t.tplRef, canOpen: openCol.canOpen};
             }
-        });
+        })
     }
 
     classFor(col: Column) {
@@ -146,6 +135,43 @@ export class GridComponent implements AfterViewInit, AfterContentInit {
         if (!this.canSort)
             return false;
         return col.canSort;
+    }
+
+    setGridColumn(name: string, tplRef: TemplateRef<any>) {
+        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        if (ref) {
+            ref.gridColumn = name;
+        }
+        else {
+            this.templateRefs.push({tplRef, gridColumn: name});
+        }
+        this.updateTemplates();
+    }
+    setOpenGridColumn(name: string, tplRef: TemplateRef<any>) {
+        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        if (ref) {
+            ref.gridOpenColumn = {...ref.gridOpenColumn, name};
+        }
+        else {
+            this.templateRefs.push({
+                tplRef,
+                gridOpenColumn: {name, canOpen: null}
+            });
+        }
+        this.updateTemplates();
+    }
+    setCanOpen(canOpen: 'editonly' | 'readonly' | null, tplRef: TemplateRef<any>) {
+        const ref = this.templateRefs.find(x => x.tplRef === tplRef);
+        if (ref) {
+            ref.gridOpenColumn = {...ref.gridOpenColumn, canOpen};
+        }
+        else {
+            this.templateRefs.push({
+                tplRef,
+                gridOpenColumn: {name: undefined, canOpen}
+            });
+        }
+        this.updateTemplates();
     }
 
     @Input()
