@@ -61,7 +61,7 @@
     "apply-loader": "^2.0.0",
     "codelyzer": "^5.1.2",
     "google-libphonenumber": "^3.2.2",
-    "ng-packagr": "^9.0.3",
+    "ng-packagr": "^10.1.1",
     "node-sass": "^4.13.1",
     "scss-bundle": "^2.4.0",
     "ts-node": "~7.0.0",
